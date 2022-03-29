@@ -1,1 +1,1 @@
-web: gunicorn  hcaretracter.wsgi --log-file -
+web: gunicorn hcaretracter.wsgi --log-file -
