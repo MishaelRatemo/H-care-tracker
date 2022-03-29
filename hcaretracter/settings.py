@@ -15,7 +15,6 @@ import  cloudinary
 import cloudinary.uploader
 import  cloudinary.api
 import dj_database_url
-from pathlib import Path
 import  django_heroku
 from  decouple import  config,Csv
 
@@ -62,7 +61,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -113,15 +112,6 @@ WSGI_APPLICATION = 'hcaretracter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hcare',
-        'USER': 'moringa',
-        'PASSWORD': 'Accesss',
-        
-    }
-}
 
 
 # Password validation
@@ -148,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Afrcica/Nairobi'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -158,7 +148,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
