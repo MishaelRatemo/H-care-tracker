@@ -31,7 +31,6 @@ class Item(models.Model):
     
     
 class Store(models.Model):
-    image = models.ImageField(upload_to='whatever', null=True, blank=True)
     name = models.CharField(max_length=50, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -40,11 +39,16 @@ class Store(models.Model):
 class Donor(models.Model):
     donor_name=models.CharField(max_length=200)
     dispatch=models.PositiveIntegerField(default=0)
-    hospital=models.ManyToManyField('Hospital', )
+    hospital=models.ManyToManyField('Hospital')
+    contact = models.CharField(max_length=16)
+    price= models.ForeignKey(Item)
     
     
 class Hospital(models.Model):
     hospital_name=models.CharField(max_length=200)
     donor=models.ForeignKey(Donor, max_length=200)
+    inventory=models.ForeignKey(Store)
+    address = models.CharField(max_length=100)
+     
 
    
