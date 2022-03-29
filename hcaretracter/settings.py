@@ -20,35 +20,35 @@ import  django_heroku
 from  decouple import  config,Csv
 
 
-# MODE=config("MODE",default='dev')
-# SECRET_KEY=config('SECRET_KEY')
-# DEBUG=config('DEBUG',default=False, cast=bool)
-# #developemnt mode
-# if config('MODE')=='dev':
-#     DATABASES={
-#         'default':{
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#            'NAME': config('DB_NAME'),
-#            'USER': config('DB_USER'),
-#            'PASSWORD': config('DB_PASSWORD'),
-#            'HOST': config('DB_HOST'),
-#            'PORT': '',
-#         }
-#     }
-# #production mode
-# else:
-#      DATABASES = {
-#        'default': dj_database_url.config(
-#            default=config('DATABASE_URL')
-#        )
-#    }
+MODE=config("MODE",default='dev')
+SECRET_KEY=config('SECRET_KEY')
+DEBUG=config('DEBUG',default=False, cast=bool)
+#developemnt mode
+if config('MODE')=='dev':
+    DATABASES={
+        'default':{
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
+        }
+    }
+#production mode
+else:
+     DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL')
+       )
+   }
     
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
@@ -57,10 +57,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY='django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=True
+
+#DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -75,9 +75,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tracker',
-    
-    
+    'tracker',       
 ]
 
 MIDDLEWARE = [
@@ -88,6 +86,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',    
 ]
 
 ROOT_URLCONF = 'hcaretracter.urls'
@@ -95,7 +94,7 @@ ROOT_URLCONF = 'hcaretracter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],        
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -149,7 +148,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Afrcica/Nairobi'
 
 USE_I18N = True
 
@@ -167,6 +166,24 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# django_heroku.settings(locals())
+STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals())
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+SECRET_KEY =os.environ.get('SECRET_KEY')
+ACCOUNT_ACTIVATION_DAYS= int(os.environ.get('ACCOUNT_ACTIVATION_DAYS'))
+DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST=os.environ.get('EMAIL_HOST')
+EMAIL_PORT= int(os.environ.get('EMAIL_PORT'))
+EMAIL_USE_TLS=True
+
+cloudinary.config(
+    cloud_name='mishmish',
+    api_key='739237125342173',
+    api_secret='0m3FpTW7VNcn3l6_bcja3ztpscw',
+)
