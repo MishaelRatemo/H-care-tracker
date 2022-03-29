@@ -35,14 +35,14 @@ class Store(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    item = models.ManyToManyField(Item, through='Items_Storage', related_name='Item')
+    item = models.ManyToManyField(Item,  related_name='Item')
     
 class Donor(models.Model):
     donor_name=models.CharField(max_length=200)
     dispatch=models.PositiveIntegerField(default=0)
+    hospital=models.ManyToManyField('Hospital', )
     
     
-
 class Hospital(models.Model):
     hospital_name=models.CharField(max_length=200)
     donor=models.ForeignKey(Donor, max_length=200)
