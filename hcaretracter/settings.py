@@ -170,3 +170,23 @@ STATIC_URL = 'static/'
 # STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # django_heroku.settings(locals())
+
+
+cloudinary.config(
+    cloud_name='mishmish',
+    api_key='739237125342173',
+    api_secret='0m3FpTW7VNcn3l6_bcja3ztpscw',
+)
+
+
+
+'''
+*************************
+'''
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+}
