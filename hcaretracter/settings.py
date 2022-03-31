@@ -187,3 +187,16 @@ cloudinary.config(
     api_key='739237125342173',
     api_secret='0m3FpTW7VNcn3l6_bcja3ztpscw',
 )
+
+
+
+'''
+*************************
+'''
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+}
