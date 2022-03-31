@@ -8,5 +8,5 @@ admin.site.register(Item)
 admin.site.register(Store)
 admin.site.register(Donor)
 admin.site.register(Hospital)
-admin.site.register(Merger)
+# admin.site.register(Merger)
 
