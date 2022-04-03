@@ -1,12 +1,13 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 from users.views import SignupView
-from users import views
+from users import views 
 
 
 
 urlpatterns = [
     path('signup/',views.signup, name='register'),
+    path('login/',views.login, name='login' ),
     # path(
     #     # route='signup/',
          
