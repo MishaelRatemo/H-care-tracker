@@ -77,6 +77,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'tracker',
     'corsheaders',
+    'bootstrap5',
+    
     
     
 ]
