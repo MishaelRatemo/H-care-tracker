@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'tracker',
+    'corsheaders',
     
     
 ]
@@ -88,6 +89,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'hcaretracter.urls'
@@ -149,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -190,3 +193,29 @@ REST_FRAMEWORK = {
        'rest_framework.authentication.TokenAuthentication',
    ),
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+r"^https://\w+\.domain\.com$",
+]
+
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000'
+# ]
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000',
+# )
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
+
+
+'''
+for heroku userbelow configs
+
+'''
+# CORS_ALLOWED_ORIGINS = [
+#     'https://h-care-tracker.herokuapp.com/'
+# ]
