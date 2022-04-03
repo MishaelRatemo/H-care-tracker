@@ -18,9 +18,9 @@ import dj_database_url
 import  django_heroku
 from  decouple import  config,Csv
 
-
+SECRET_KEY='django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
 MODE=config("MODE",default='dev')
-SECRET_KEY=config('SECRET_KEY')
+# SECRET_KEY=config('SECRET_KEY')
 DEBUG=config('DEBUG',default=False, cast=bool)
 #developemnt mode
 if config('MODE')=='dev':
@@ -74,7 +74,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tracker',       
+    'tracker',
+    'users'       
 ]
 
 MIDDLEWARE = [
@@ -163,7 +164,7 @@ django_heroku.settings(locals())
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
-SECRET_KEY =os.environ.get('SECRET_KEY')
+# SECRET_KEY =os.environ.get('SECRET_KEY')
 # ACCOUNT_ACTIVATION_DAYS= int(os.environ.get('ACCOUNT_ACTIVATION_DAYS'))
 # DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
 # EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')

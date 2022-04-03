@@ -3,15 +3,21 @@ from django.core.mail import send_mail
 from django.views.generic import FormView, UpdateView
 from django.urls import reverse, reverse_lazy
 from users.forms import SignupForm
-from users.models import Profile
+from tracker.models import Profile
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 # Create your views here.
 
+
+def signup(request):
+    title= ' Welcome'
+    context ={ 'title': title}
+    return render(request, 'signup.html', context)
+
 class SignupView(FormView):
     """Signup View."""
-    template_name = 'users/signup.html'
+    template_name = 'users/templates/signup.html'
     form_class = SignupForm
     success_url = reverse_lazy('users:login')
 

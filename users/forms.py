@@ -1,7 +1,7 @@
 from django import forms
 
 from django.contrib.auth.models import User
-from users.models import Profile
+from tracker.models import Profile
 
 class SignupForm(forms.Form):
     """signup form"""
@@ -42,7 +42,7 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'Place of work','class': 'form-control'})
     )
     account_type = forms.CharField(
-        widget=forms.Selectz(attrs={'placeholder': 'Pick one','class': 'form-control'})
+        widget=forms.Select(attrs={'placeholder': 'Pick one','class': 'form-control'})
 
     )
     
