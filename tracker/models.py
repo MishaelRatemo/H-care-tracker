@@ -49,6 +49,7 @@ class Hospital(models.Model):
     donor_name=models.ForeignKey(Donor,on_delete=models.CASCADE, max_length=200)
     inventory=models.ForeignKey(Store,on_delete=models.CASCADE,)
     address = models.CharField(max_length=100)
+    
      
 
    
