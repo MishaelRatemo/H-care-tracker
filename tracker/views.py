@@ -1,3 +1,4 @@
+from locale import currency
 from django.shortcuts import render
 from django.contrib.auth.models import User,Group
 from rest_framework import  viewsets, permissions, status
@@ -20,6 +21,15 @@ def home(request):
     context ={ 'title': title}
     return render(request, 'index.html', context)
 
+
+def profile(request):
+    userprofile= ' Profile'
+    user = request.user
+    args ={
+        'data': userprofile,
+        'user': user,
+    }
+    return render(request, 'profile.html', args)
 
 
 '''

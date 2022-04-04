@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     'django_registration',
     'corsheaders',
     'bootstrap5',
+    'fontawesomefree',
     'tracker',
     'donor',
     'about',
@@ -173,7 +174,18 @@ django_heroku.settings(locals())
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
+
+
 # SECRET_KEY =os.environ.get('SECRET_KEY')
+SECRET_KEY =os.environ.get('SECRET_KEY')
+ACCOUNT_ACTIVATION_DAYS= int(os.environ.get('ACCOUNT_ACTIVATION_DAYS'))
+DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST=os.environ.get('EMAIL_HOST')
+EMAIL_PORT= int(os.environ.get('EMAIL_PORT'))
+EMAIL_USE_TLS=True
+
 
 
 cloudinary.config(

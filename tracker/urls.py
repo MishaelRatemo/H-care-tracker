@@ -16,6 +16,8 @@ urlpatterns = [
     path('items/', views.items), 
     path('api/userdetails/<int:pk>',views.user_details),
     path('save_user/', views.save_user),
+    path('accounts/profile/', views.profile, name='profile'),
+    
     # path('allusers/',UserViewSet.as_view(), name='users'),
     
 ]
