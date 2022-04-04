@@ -75,10 +75,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tracker',
+    'django_registration',
     'corsheaders',
     'bootstrap5',
-    
+    'tracker',
+    'donor',
+    'about',
+    'contact',
+    'services',   
     
     
 ]
