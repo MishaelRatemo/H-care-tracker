@@ -17,9 +17,8 @@ from django.contrib.auth.hashers import  make_password, check_password
 
 # Create your views here.
 def home(request):
-    title= ' Welcome'
-    context ={ 'title': title}
-    return render(request, 'index.html', context)
+
+    return render(request, 'index.html')
 
 
 
