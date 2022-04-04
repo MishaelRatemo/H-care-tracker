@@ -15,14 +15,13 @@ import  cloudinary
 import cloudinary.uploader
 import  cloudinary.api
 import dj_database_url
-from pathlib import Path
 import  django_heroku
 from  decouple import  config,Csv
 
 
 MODE=config("MODE",default='dev')
 SECRET_KEY=config('SECRET_KEY')
-DEBUG=config('DEBUG',default=False, cast=bool)
+DEBUG=config('DEBUG',default=True, cast=bool)
 #developemnt mode
 if config('MODE')=='dev':
     DATABASES={
@@ -60,14 +59,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG
+DEBUG=True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,9 +82,8 @@ INSTALLED_APPS = [
     'donor',
     'about',
     'contact',
-    'services',   
-    
-    
+    'services',    
+    'hospital',     
 ]
 
 MIDDLEWARE = [
@@ -124,15 +123,6 @@ WSGI_APPLICATION = 'hcaretracter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hcare',
-        'USER': 'moringa',
-        'PASSWORD': 'Accesss',
-        
-    }
-}
 
 
 # Password validation
@@ -169,7 +159,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -184,14 +174,8 @@ django_heroku.settings(locals())
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
-SECRET_KEY =os.environ.get('SECRET_KEY')
-ACCOUNT_ACTIVATION_DAYS= int(os.environ.get('ACCOUNT_ACTIVATION_DAYS'))
-DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
-EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST=os.environ.get('EMAIL_HOST')
-EMAIL_PORT= int(os.environ.get('EMAIL_PORT'))
-EMAIL_USE_TLS=True
+# SECRET_KEY =os.environ.get('SECRET_KEY')
+
 
 cloudinary.config(
     cloud_name='mishmish',
