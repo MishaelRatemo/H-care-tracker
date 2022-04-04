@@ -74,7 +74,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tracker',       
+    'django_registration',
+    'corsheaders',
+    'bootstrap5',
+    'tracker',
+    'donor',
+    'about',
+    'contact',
+    'services',   
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -86,6 +95,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',    
+    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'hcaretracter.urls'
@@ -177,3 +188,42 @@ cloudinary.config(
     api_key='739237125342173',
     api_secret='0m3FpTW7VNcn3l6_bcja3ztpscw',
 )
+
+
+
+'''
+*************************
+'''
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+}
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+r"^https://\w+\.domain\.com$",
+]
+
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000'
+# ]
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000',
+# )
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
+
+
+'''
+for heroku userbelow configs
+
+'''
+# CORS_ALLOWED_ORIGINS = [
+#     'https://h-care-tracker.herokuapp.com/'
+# ]
