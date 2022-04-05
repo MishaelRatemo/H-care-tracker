@@ -6,4 +6,4 @@ def contact_us(request):
     context ={
         'title': title,
     }    
-    return render(request, 'contact_us.html', context)
+    return render(request, 'contact.html', context)
