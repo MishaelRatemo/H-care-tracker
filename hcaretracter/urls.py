@@ -15,11 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from users import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('tracker.urls')),
-    path('auth/', include('users.urls'))
-]
+    path('donor/', include('donor.urls')),
+    path('hospital/', include('hospital.urls')),    
+    path('about/', include('about.urls')),
+    path('contact/', include('contact.urls')),
+    path('services/', include('services.urls')),    
+    
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block title %}
+{{title}}    
+{% endblock  %}    
+
+{% block content %}
+
+
+    <div class="container-fluid ">
+        <h1 class="text-center">
+            Inbound Request
+        </h1>
+        <table class="table container">
+            <thead>
+              <tr>
+                <th scope="col">Request id &nbsp;|</th>
+                <th scope="col">From &nbsp;|</th>
+                <th scope="col">Items &nbsp;|</th>
+                <th scope="col">Quantiy &nbsp;|</th>
+                <th scope="col">In Store &nbsp;|</th>
+                <th scope="col">Actions</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Nairobi HP</td>
+                <td>Sterilizers</td>
+                <td>150</td>
+                <td>2300</td>
+                <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
+                    <input type="button" class="btn btn-sm btn-danger" value="Acccept">
+                  </td>
+
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Komarock Hospital</td>
+                <td>Defibrillator</td>
+                <td>20</td>
+                <td>579</td>
+                <td> <input type="button" class="btn btn-sm btn-success" value="Acccept">  
+                    <input type="button" class="btn btn-sm btn-danger" value="Acccept"> 
+                </td>
+
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td >Kikuyu</td>
+                <td>Retinoscope</td>
+                <td>@39</td>
+                <td>199</td>
+
+                <td> <input type="button" class="btn btn-sm btn-success" value="Acccept">  
+                    <input type="button" class="btn btn-sm btn-danger" value="Acccept"> 
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+    </div> 
+    
+    
+    <div class="container-fluid mt-5 ">
+        <h1 class="text-center"> 
+            Outbound Request
+        </h1>
+        <table class="table table-success table-striped container">
+            <thead>
+              <tr>
+                <th scope="col">Request id &nbsp;|</th>
+                <th scope="col">To &nbsp;|</th>
+                <th scope="col">Items &nbsp;|</th>
+                <th scope="col">Quantiy &nbsp;|</th>
+                <th scope="col">Status &nbsp;|</th>
+                <th scope="col">Actions</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for req in requests  %}
+              <tr>
+                <th scope="row">{{req.pk}}</th>
+                <td>{{req.donor_name}}</td>
+                <td>{{req.item}}</td>
+                <td>{{req.quantity}}</td>
+                <td>{{req.address}}</td>
+                <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
+                    <input type="button" class="btn btn-sm btn-danger" value="Acccept">
+                  </td> -->
+      
+              </tr>
+      
+                
+              {% endfor %}
+                
+            </tbody>
+          </table>
+
+    </div>
+{% endblock %}

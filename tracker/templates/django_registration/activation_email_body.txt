@@ -1,0 +1,32 @@
+
+Welcome to H- Care Supplies Tracker {{user.username}}
+
+
+
+ 
+Congratulations! You're almost set to start using our System . Just click the link below to validate your Created accout.
+      
+      
+      {{site.name}}/accounts/activate/{{activation_key}}
+
+Alternatively you can copy the link and paste it in your browser
+
+{{site.name}}/accounts/activate/{{activation_key}}
+
+
+
+Note: You must perform this validation within the next {{expiration_days}} days. to keep your new account enabled.
+
+Account details
+    >> Email: {{user.email}}
+    >> Account Name: {{user.username}}    
+
+Thanks for becoming part of Us. Get the best of our service and secure your goods while on  transit.
+
+
+Regard,
+H.Care Support team.
+We care for your goods.
+
+*******************************************************************************
+*******************************************************************************
