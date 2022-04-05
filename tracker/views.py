@@ -36,7 +36,8 @@ def signup(request):
         name = request.POST.get('name')
         account_type = request.POST.get('account_type')
         email = request.POST.get('email')
-        contact = request.POST.get('contact')        
+        contact = request.POST.get('contact') 
+        address = request.POST.get('address')               
         password = request.POST.get('password')
         pass_hash = make_password(password)
         
@@ -45,7 +46,7 @@ def signup(request):
             error = 'user with this email already exists'
             return redirect('signup')
         else:
-            new_user = Registrations(name=name, account_type=account_type, email=email, contact=contact,password=pass_hash)
+            new_user = Registrations(name=name, account_type=account_type, email=email, contact=contact, address=address,password=pass_hash)
             new_user.save()
             success = ' User Registered successfully'
        

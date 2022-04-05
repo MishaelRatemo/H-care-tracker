@@ -61,9 +61,9 @@ SECRET_KEY= 'django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
 
 DEBUG=True
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
