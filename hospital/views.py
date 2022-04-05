@@ -5,10 +5,11 @@ from .forms import RequestForm
 
 def hshome(request):
 
-  
+
   return render(request,'hshome.html')
 
-
+def services(request):
+  return render(request,'services.html')
 
 def hsrequest(request):
     current_user = request.user
