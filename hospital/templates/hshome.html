@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load bootstrap5 %} {% load static %}
+
+{%block content%}
+
+<div class="container-fluid ">
+  <h1 class="text-center">
+      Inbound Request
+  </h1>
+  <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">Request id &nbsp;|</th>
+          <th scope="col">From &nbsp;|</th>
+          <th scope="col">Items &nbsp;|</th>
+          <th scope="col">Quantiy &nbsp;|</th>
+          <!-- <th scope="col">In Store &nbsp;|</th> -->
+          <th scope="col">Address</th>
+
+        </tr>
+      </thead>
+      <tbody>
+            
+            {% for hosy in hospitals  %}
+            <tr>
+              <th scope="row">{{hosy.pk}}</th>
+              <td>{{hosy.donor_name}}</td>
+              <td>{{hosy.item}}</td>
+              <td>{{hosy.quantity}}</td>
+              <td>{{hosy.address}}</td>
+              <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
+                  <input type="button" class="btn btn-sm btn-danger" value="Acccept">
+                </td> -->
+    
+            </tr>
+    
+              
+            {% endfor %}
+                      
+      </tbody>
+    </table>
+
+</div>
+<!-- 
+<div   class="">
+<div class="headings container">
+  <h1 class="text-center text-primary mb-5">Check Request</h1>
+  <div class="d-flex justify-content-around mt-5">
+  <h4 class="border-dark border-0 border-2 border-end pe-5">Donor</h4>
+  <h4 class="border-dark border-0 border-2 border-end pe-5">Equipment</h4>
+  <h4 class="border-dark border-0 border-2 border-end pe-5">Status</h4>
+  <h4 class="border-dark border-0 border-2 border-end pe-5">Time Frame</h4>
+  <h4 class="border-dark border-0 border-2 border-end pe-5">Live Track</h4>
+</div> 
+<hr>
+</div>
+</div> -->
+{%endblock%}
