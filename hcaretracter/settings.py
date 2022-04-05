@@ -19,6 +19,8 @@ import  django_heroku
 from  decouple import  config,Csv
 
 
+SECRET_KEY='django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
+# SECRET_KEY='django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
 MODE=config("MODE",default='dev')
 SECRET_KEY=config('SECRET_KEY')
 DEBUG=config('DEBUG',default=True, cast=bool)
@@ -76,14 +78,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tracker',  
-    'hospital', 
     'django_registration',
     'corsheaders',
+    'bootstrap5',
+    'fontawesomefree',
+    'tracker',
     'donor',
     'about',
     'contact',
-    'services',       
+    'services',    
+    'hospital',     
 ]
 
 MIDDLEWARE = [
@@ -217,11 +221,11 @@ REST_FRAMEWORK = {
    ),
 }
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
-# CORS_ALLOWED_ORIGIN_REGEXES = [
-# r"^https://\w+\.domain\.com$",
-# ]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+r"^https://\w+\.domain\.com$",
+]
 
 
 # CORS_ALLOWED_ORIGINS = [

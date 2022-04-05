@@ -7,3 +7,46 @@
 .bg-slider{
   background-color: rgba(1, 1, 1, .5)
 }
+
+#about {
+  background-image: linear-gradient(to right, #AEBCC9, #e8ecf0,#e4e9ec,#d8dad9, #d3d3d4, #d9dbdd, #e8ecf0,#e4e9ec,#d5dbe1, #AEBCC9 );
+
+}
+#about {
+  border-radius: 47px;
+  background: #d1d1d1;
+  box-shadow: inset 26px 26px 100px #b2b2b2,
+              inset -26px -26px 100px #f0f0f0;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: medium;
+}
+#how {
+border-radius: 36px;
+background: #b7d9e4;
+box-shadow:  34px 34px 68px #9dd8ec,
+             -34px -34px 68px #adeeff;
+}
+#what{
+  border-radius: 36px;
+background: #b7d9e4;
+box-shadow:  34px 34px 68px #9dd8ec,
+             -34px -34px 68px #adeeff;
+}
+#mission{
+  border-radius: 36px;
+background: #b7d9e4;
+box-shadow:  34px 34px 68px #9dd8ec,
+             -34px -34px 68px #adeeff;
+}
+#vision{
+  border-radius: 36px;
+background: #b7d9e4;
+box-shadow:  34px 34px 68px #9dd8ec,
+             -34px -34px 68px #adeeff;
+}
+#hq{
+  border-radius: 36px;
+background: #b7d9e4;
+box-shadow:  34px 34px 100px #9dd8ec,
+             -34px -34px 100px #adeeff;
+}

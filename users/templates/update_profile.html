@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_content %}
+<title>{{ user.username }} </title>
+{% endblock %}
+
+{% block container %}
+
+<div class="container">
+
+    <div class="row justify-content-md-center">
+        <div class="col-6 p-4" id="profile-box">
+
+            <form action="{% url 'users:update_profile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="media">
+                    <div class="media-body">
+                        <h5 class="ml-4">{{ user.username }} | {{ user.get_full_name }}</h5>
+                        <p class="ml-4"><input type="file" name="picture" ></p>
+                    </div>
+                </div>
+                <hr><br>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input
+                        class="form-control 
+                        {% if form.website.errors %}
+                        	is-invalid
+                        {% endif %}"
+                        type="text"
+                        name="Name"
+                        placeholder="Name"
+                        value="{% if form.errors %}{{form.name.value}}{% else %}{{ user.profile.name}}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                    	{% for error in form.name.errors %}
+                    		{{error}}
+                    	{% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <textarea
+                    	class="form-control 
+                        {% if form.biography.errors %}
+                        	is-invalid
+                        {% endif %}" 
+                    	name="email">{% if form.errors %}{{form.email.value}}{% else %}{{user.profile.email }}{% endif %}</textarea>
+                	<div class="invalid-feedback">{% for error in form.email.errors %}{{error}}{% endfor %}</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Contact</label>
+                    <input
+                        class="form-control 
+                        {% if form.phone_number.errors %}
+                        	is-invalid
+                        {% endif %}"
+                        type="text"
+                        name="contact"
+                        placeholder="contact"
+                        value="{% if form.errors %}{{form.contact.value}}{% else %}{{ user.profile.contact }}{% endif %}"/>
+                    <div class="invalid-feedback">
+                    	{% for error in form.contact.errors %}
+                    		{{error}}
+                    	{% endfor %}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
