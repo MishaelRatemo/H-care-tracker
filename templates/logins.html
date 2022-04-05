@@ -7,11 +7,11 @@
 {% endblock  %}    
 
 {% block content %}
-<main class="container">
+<main class="container-fluid">
     <h1>
         {{title}}    
     </h1> 
-    <div class="container">
+    <div class="container-fluid">
         <form action="{% url 'login' %} " class="shadow p-4" method="post">
             <div class="text-danger">{{error}}</div>
             {% csrf_token %}
