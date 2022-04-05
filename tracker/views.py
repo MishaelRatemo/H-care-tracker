@@ -1,5 +1,5 @@
-from locale import currency
-from django.shortcuts import render
+
+from django.shortcuts import redirect, render
 from django.contrib.auth.models import User,Group
 from rest_framework import  viewsets, permissions, status
 from rest_framework.views import APIView
@@ -12,15 +12,82 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import *
 from django.contrib.auth.hashers import  make_password, check_password
-
+from tracker.forms import LoginForm, RegistrationForm
+from tracker.models import Registrations
 
 
 # Create your views here.
 def home(request):
-    title= ' Welcome'
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        pass
+    title= ' Welcome  ' + loggedin_user
     context ={ 'title': title}
     return render(request, 'index.html', context)
 
+def signup(request):
+    error = ''
+    success = ''
+    form = RegistrationForm()
+    if request.method == 'POST':
+        print('#######################')
+        name = request.POST.get('name')
+        account_type = request.POST.get('account_type')
+        email = request.POST.get('email')
+        contact = request.POST.get('contact')        
+        password = request.POST.get('password')
+        pass_hash = make_password(password)
+        
+        get_user = Registrations.objects.filter(email=email)
+        if get_user.exists():
+            error = 'user with this email already exists'
+            return redirect('signup')
+        else:
+            new_user = Registrations(name=name, account_type=account_type, email=email, contact=contact,password=pass_hash)
+            new_user.save()
+            success = ' User Registered successfully'
+       
+        
+    context = {
+        'form': form,
+        'error': error,
+        'success': success,
+    }
+    return render(request, 'signupform.html', context)
+
+
+def login(request):
+    form = LoginForm()
+    error= ''
+    if request.method == 'POST':
+        username = request.POST.get('email')
+        password = request.POST.get('password')
+        get_user = Registrations.objects.filter(email=username)
+        if get_user.exists():
+            get_user = Registrations.objects.get(email=username)
+            get_pass = get_user.password
+            if check_password(password,get_pass):
+                if get_user.account_type == 'DONOR':
+                    destination = 'donorhomepg'                    
+                else:
+                    destination = 'hshome'
+                    
+                response = redirect(destination)
+                response.set_cookie('loggedin',username)
+                return response
+                
+            else:
+                error= 'Incorrect password'
+                return redirect('login')
+        else:
+            error ='User with this email does not exist'            
+    
+    context = {
+        'form': form,
+        'error':error,
+    }
+    return render(request, 'logins.html', context)
 
 def profile(request):
     userprofile= ' Profile'

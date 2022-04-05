@@ -83,43 +83,22 @@
               </tr>
             </thead>
             <tbody>
+              {% for req in requests  %}
               <tr>
-                <th scope="row">1</th>
-                <td>Nairobi HP</td>
-                <td>Sterilizers</td>
-                <td>150</td>
-                <td> <input type="button" class="btn btn-sm btn-success" value="Delivered"> 
-                    
-                <td> <input type="button" class="btn btn-sm btn-info" value="Clear"> 
-                    <input type="button" class="btn btn-sm btn-warning" value="Follow up">
-                  </td>
-
+                <th scope="row">{{req.pk}}</th>
+                <td>{{req.donor_name}}</td>
+                <td>{{req.item}}</td>
+                <td>{{req.quantity}}</td>
+                <td>{{req.address}}</td>
+                <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
+                    <input type="button" class="btn btn-sm btn-danger" value="Acccept">
+                  </td> -->
+      
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Komarock Hospital</td>
-                <td>Defibrillator</td>
-                <td>20</td>
-                <td> <input type="button" class="btn btn-sm btn-primary" value="Processing.."> 
-
-                <td> <input type="button" class="btn btn-sm btn-info" value="Clear">  
-                    <input type="button" class="btn btn-sm btn-warning" value="Follow up"> 
-                </td>
-
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td >Kikuyu</td>
-                <td>Retinoscope</td>
-                <td>@39</td>
-                <td> <input type="button" class="btn btn-sm btn-secondary" value="Unknown.."> 
+      
                 
-
-                <td> <input type="button" class="btn btn-sm btn-info" value="Clear">  
-                    <input type="button" class="btn btn-sm btn-warning" value="Follow up"> 
-                </td>
-
-              </tr>
+              {% endfor %}
+                
             </tbody>
           </table>
 

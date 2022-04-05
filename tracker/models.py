@@ -32,10 +32,12 @@ class Item(models.Model):
 class Store(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    item= models.ForeignKey(Item, on_delete=models.CASCADE)
-       
+    updated_at = models.DateTimeField(auto_now_add=True)
+    item_name= models.CharField(null=True, max_length=50)
+    quantity = models.PositiveIntegerField(default=0)
+    item_description = models.TextField(null=True, blank=True)
     
+
 
 class Donor(models.Model):
     donor_name=models.CharField(max_length=200)
@@ -49,13 +51,28 @@ class Hospital(models.Model):
     address = models.CharField(max_length=100)
     
      
-
-# class Merger(models.Model):
-#     user=models.ForeignKey(User,null=True, on_delete=models.CASCADE)
-#     inventory=models.ForeignKey(Store,on_delete=models.CASCADE)
-#     donor_name=models.ForeignKey(Donor,on_delete=models.CASCADE, max_length=200)
-#     hospital_name=models.ForeignKey(Hospital, max_length=255, default='0', on_delete=models.CASCADE)
-#     item = models.ForeignKey(Item, on_delete= models.CASCADE, null=True ,related_name='Items')
+class Registrations(models.Model):
+    DONOR = 'DONOR'
+    HOSPITAL = 'HOSPITAL'
+    account_type = [
+        (DONOR, 'DONOR'),
+        (HOSPITAL, 'HOSPITAL'),        
+    ]    
+    name = models.CharField(max_length=200)
+    account_type = models.CharField(choices=account_type, max_length=50)
+    email = models.EmailField(max_length=100, unique=True)
+    contact = models.CharField(max_length=16)
+    password = models.CharField(max_length=300)
     
+    class Meta:
+        db_table = 'Registrations'
     
-   
+    def __str__(self):
+        return self.email
+    
+class Order(models.Model):
+    order_date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(Registrations, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    item = models.CharField(max_length=200, blank=True)
+    

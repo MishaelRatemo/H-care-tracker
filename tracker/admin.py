@@ -5,6 +5,8 @@ from .models import (
     Store,
     Item,
     Donor,
+    Registrations,
+    Order,   
     
 )
 
@@ -16,5 +18,9 @@ admin.site.register(Item)
 admin.site.register(Store)
 admin.site.register(Donor)
 admin.site.register(Hospital)
+admin.site.register(Registrations)
+admin.site.register(Order)
+
+
 # admin.site.register(Merger)
 

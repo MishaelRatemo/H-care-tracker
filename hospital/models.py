@@ -13,5 +13,6 @@ class Hospital(models.Model):
     item=models.CharField(max_length=200)
     quantity=models.IntegerField()
     address = models.CharField(max_length=100)
+    date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     
     
