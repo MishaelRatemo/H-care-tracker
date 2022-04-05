@@ -1,5 +1,6 @@
 from operator import ne
 import re
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User,Group
 from rest_framework import  viewsets, permissions, status
@@ -15,7 +16,7 @@ from .serializers import *
 from django.contrib.auth.hashers import  make_password, check_password
 from tracker.forms import LoginForm, RegistrationForm
 from tracker.models import Registrations
-
+from .models import Contact
 
 # Create your views here.
 def home(request):
@@ -164,3 +165,17 @@ def user_details(request,pk):
     elif request.method == 'DELETE':
         profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+def contact_us(request):
+    if request.method=="POST":
+        contact=Contact()
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject') 
+        contact.name=name
+        contact.email=email
+        contact.subject=subject
+        contact.save()
+        
+        return HttpResponse("Thanks for Contacting US")
+    return render(request, 'contact_us.html')
