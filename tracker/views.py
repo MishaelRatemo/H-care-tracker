@@ -18,11 +18,11 @@ from tracker.models import Registrations
 
 # Create your views here.
 def home(request):
-    try:
-        loggedin_user = request.COOKIES['loggedin']
-    except:
-        pass
-    title= ' Welcome  ' + loggedin_user
+    # try:
+    #     loggedin_user = request.COOKIES['loggedin']
+    # except:
+    #     pass
+    title= ' Welcome  ' #+ loggedin_user
     context ={ 'title': title}
     return render(request, 'index.html', context)
 
