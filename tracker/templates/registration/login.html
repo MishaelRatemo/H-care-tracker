@@ -2,12 +2,13 @@
 {% load bootstrap5 %}
 {% load static %}
 {% block content %}
-<div class="container h-100 d-flex align-items-center flex-wrap">        
-        <div class="col-6 card m-auto col-6 ">
-            {% if form.errors %}
+<div class="container border-info border-2 shadow bg-light h-100 d-flex align-items-center flex-wrap mt-3 rounded-3"> 
+    <img class="col-5 card m-auto" src="https://media.istockphoto.com/photos/question-marks-with-speech-bubbles-on-blue-background-picture-id1211341806?b=1&k=20&m=1211341806&s=612x612&w=0&h=jGGYSyB5KdL1fwQWPX9O97ZycZwt-XgFd0ejq8t5sEw=" alt="">       
+        <div class="col-6 card m-auto col-6 border-0 my-4 ">
+            <!-- {% if form.errors %}
                 <p class="alert alert-danger"> Password or Username is incorrect or your account has not been activated <br> Check email </p>
-            {% endif %}
-            <div class="panel panel-default mt-4">
+            {% endif %} -->
+            <div class="panel panel-default mt-4 ">
                 <div class="panel-heading bg-info p-3">
                    <h3 class="text-center text-light">Sign In</h3>
                 </div>
@@ -22,7 +23,7 @@
                         </div>
                         <input type="hidden" name="next" value="{{next}}">
                         <div class="mt-3 text-center">
-                            <h6>Don't have account? <a class="text-info" href="/accounts/register/">Sign up</a></h6>
+                            <h6>Don't have account? <a class="text-info" href="{% url 'signup' %}">Sign up</a></h6>
                         </div>
                     </form>
                     </div>

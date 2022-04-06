@@ -17,7 +17,6 @@ from .serializers import *
 from django.contrib.auth.hashers import  make_password, check_password
 from tracker.forms import LoginForm, RegistrationForm
 from tracker.models import Registrations
-from .models import Contact
 
 # Create your views here.
 def home(request):

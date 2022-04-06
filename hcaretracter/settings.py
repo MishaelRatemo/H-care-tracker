@@ -80,8 +80,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_registration',
     'corsheaders',
-    'bootstrap5',
-    'fontawesomefree',
     'tracker',
     'donor',
     'about',
