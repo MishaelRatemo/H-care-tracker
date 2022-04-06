@@ -23,4 +23,5 @@ admin.site.register(Order)
 
 
 # admin.site.register(Merger)
-
+# dericks model
+admin.site.register(Contact)
