@@ -1,13 +1,14 @@
 from multiprocessing import context
 from django.shortcuts import render,redirect
-
 import hospital
 from hospital.models import Hospital
 from tracker.models import Item, Order, Registrations
 from .forms import RequestForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
-
+@login_required(login_url='/login/')
 def hshome(request):
 
     hospital = Order.objects.all()
