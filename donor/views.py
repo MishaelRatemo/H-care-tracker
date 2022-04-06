@@ -13,4 +13,8 @@ def donarpage(request):
         'title': title,
         'requests': requests,
     }
+    if request.GET.get('Dispatch') == 'Dispatch':
+        req = Order.objects.get(id=id)
+
+        req.delete()
     return render(request, 'donorindex.html', context)

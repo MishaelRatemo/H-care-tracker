@@ -33,8 +33,8 @@
                 <td>{{req.item}}</td>
                 <td>{{req.quantity}}</td>
                 <!-- <td>{{req.address}}</td> -->
-                <td> <input type="button" class="btn btn-sm btn-success" value="Dispatch"> 
-                    <input type="button" class="btn btn-sm btn-danger" value="Reject">
+                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
+                    <input type="button" class="btn btn-sm btn-danger" value="Reject" name="reject">
                   </td>
       
               </tr>
@@ -72,3 +72,15 @@
 
     </div>
 {% endblock %}
+{% block scripts %}
+<script>
+  var buttons = document.getElementsByClassName('delete');
+for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', deleteItem);
+}
+function deleteItem() {
+    var li = this.parentNode;
+    li.parentNode.removeChild(li);
+}
+</script>
+{%endblock%}

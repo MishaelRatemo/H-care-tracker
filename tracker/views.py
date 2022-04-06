@@ -50,7 +50,7 @@ def signup(request):
             new_user = Registrations(name=name, account_type=account_type, email=email, contact=contact, address=address,password=pass_hash)
             new_user.save()
             success = ' User Registered successfully'
-       
+        return redirect('login')
         
     context = {
         'form': form,

@@ -13,7 +13,7 @@ class RegistrationForm(forms.ModelForm):
         
         
 class LoginForm(forms.ModelForm):
-       
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput)
     class Meta:
         model = Registrations
         fields = ['email','password']
