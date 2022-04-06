@@ -9,7 +9,7 @@
 {% block content %}
 
 
-<main class="container-fluid " id="about">
+<main class="container-fluid pb-3" id="about">
     <h1 class=" container-fluid col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center fw-bold">
         {{title}}
         <pre></pre>
@@ -17,7 +17,7 @@
     
 
     <section>
-        <div class="container-fluid col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" id="how">
+        <div class="container-fluid bg-light shadow rounded-3  col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" data-aos="fade-left" data-aos-duration="3000" id="how">
             <img src="/static/images/icons8-start-line-64.png" alt="">
             <h3>How we Began</h3>
             <pre></pre>
@@ -27,37 +27,41 @@
             <pre></pre>
 
         </div>
-        <div class="container-fluid col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" id="what">
+        <div class="container-fluid bg-light shadow rounded-3  col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" data-aos="fade-right" data-aos-duration="3000"  id="what">
             <img src="/static/images/icons8-activities-64.png" alt="">
             <h3>What we Do</h3>
             <pre></pre>
             <p>We are a tracking company that provides the service of tracking your supplies from supplier to reciever and to ensure that what has been ordered is exactly what arrives.</p>
             <pre></pre>
         </div>
-        <div class="container-fluid col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" id="vision">
+
+    </section>
+    <div class="d-flex flex-wrap justify-content-between">
+        <div class="container-fluid bg-light shadow rounded-3 col-xs-6 col-sm-3 col-md-3 col-md-offset-3 text-center" data-aos="slide-up" data-aos-duration="3000"  id="vision">
             <img src="/static/images/icons8-vision-64.png" alt="">
             <h3>Vision</h3>
             <pre></pre>
             <p>To get all affordable and equitable supplies to citizens throught all rural areas and settlements.</p>
             <pre></pre>
         </div>
-        <div class="container-fluid col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" id="mission">
+        <div class="container-fluid bg-light shadow rounded-3 col-xs-6 col-sm-3 col-md-3 col-md-offset-3 text-center" data-aos="slide-up" data-aos-duration="3000" id="mission">
             <img src="/static/images/icons8-mission-64.png" alt="">
             <h3>Mission</h3>
             <pre></pre>
             <p>To build a reputable distribution system that will serve all equally and ensure accountable, equitable distribution of medical supplies.</p>
             <pre></pre>
         </div>
-        <div class="container-fluid col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" id="hq">
+        <div class="container-fluid bg-light shadow rounded-3 col-xs-6 col-sm-3 col-md-3 col-md-offset-3 text-center" data-aos="slide-up" data-aos-duration="3000" id="hq">
             <img src="/static/images/icons8-headquarters-64.png" alt="">
             <h3>Our H.Q</h3>
             <pre></pre>
             <p>Our offices are currently at Moringa. This is where we run our operations from and for the foreseable future will be held here for ease of access to our generous and wonderful clients.</p>
             <pre></pre>
         </div>
-    </section>
+    </div>
+</main>
     <footer class="bg-dark text-center text-white">
-        <div class="container p-4">
+        <div class="p-4">
         <section class="">
             <form action="">
             <div class="row d-flex justify-content-center">
@@ -92,6 +96,6 @@
     </div>
    
     </footer>
-</main>
+
 
 {% endblock  %}
