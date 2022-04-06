@@ -27,18 +27,19 @@
             </thead>
             <tbody>
               {% for req in requests  %}
-              <tr>
+              <div>
+              <tr class="req" id="myTableRow">
                 <th scope="row">{{req.pk}}</th>
                 <td>{{req.user}}</td>
                 <td>{{req.item}}</td>
                 <td>{{req.quantity}}</td>
                 <!-- <td>{{req.address}}</td> -->
                 <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
-                    <input type="button" class="btn btn-sm btn-danger" value="Reject" name="reject">
+                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
                   </td>
       
               </tr>
-      
+            </div>
                 
               {% endfor %}
               
@@ -59,28 +60,36 @@
                 <th scope="col">To &nbsp;|</th>
                 <th scope="col">Items &nbsp;|</th>
                 <th scope="col">Quantiy &nbsp;|</th>
-                <th scope="col">Status &nbsp;|</th>
+                <!-- <th scope="col">Status &nbsp;|</th> -->
                 <th scope="col">Actions</th>
 
               </tr>
             </thead>
-            <tbody>
+            <tbody class="body">
               
+
+                {% for req in requests  %}
+              <tr class="re" id="outbound" style="display: none;">
+                <th scope="row">{{req.pk}}</th>
+                <td>{{req.user}}</td>
+                <td>{{req.item}}</td>
+                <td>{{req.quantity}}</td>
+                <!-- <td>{{req.address}}</td> -->
+                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
+                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
+                  </td>
+      
+              </tr>
+      
                 
+        
+            
+      
+                
+              {% endfor %}
             </tbody>
           </table>
 
     </div>
 {% endblock %}
-{% block scripts %}
-<script>
-  var buttons = document.getElementsByClassName('delete');
-for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', deleteItem);
-}
-function deleteItem() {
-    var li = this.parentNode;
-    li.parentNode.removeChild(li);
-}
-</script>
-{%endblock%}
+
