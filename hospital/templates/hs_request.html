@@ -2,20 +2,23 @@
 {% load bootstrap5 %} {% load static %}
 
 {%block content%}
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 mt-5">
-      <form  action="{%url 'request'%}" method="post" enctype="multipart/form-data">
-        {%csrf_token%}
-    
-        {% bootstrap_form form%}
-        <input type="submit" class="btn btn-primary btn-lg" value="Post">
-      </form>
-    
-       {% block scripts %}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      {% bootstrap_javascript %} {% endblock %}
+<main class="">
+  <div class="container m-auto ">
+    <div class="row m-auto">
+      <div class="col-md-8 mt-5 shadow p-3">
+        <form  action="{%url 'request'%}" method="post" enctype="multipart/form-data">
+          <div class=" alert-danger">{{error}}</div>
+          <div class=" alert-success">{{success}}</div>
+  
+          {%csrf_token%}
+      
+          {% bootstrap_form form%}
+          <input type="submit" class="btn btn-success btn-lg" value="Place Request">
+        </form>
+      
+        
+      </div>
     </div>
   </div>
-</div>
+</main>
 {%endblock%}
