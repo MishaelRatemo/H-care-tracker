@@ -1,9 +1,3 @@
-.bdy{
-  /* background-image: linear-gradient(rgba(to right gray white aqua)); */
-  /* background-image: linear-gradient(to right, #AEBCC9, #e8ecf0,#e4e9ec,#d5dbe1, #AEBCC9, #AEBCC9, #e8ecf0,#e4e9ec,#d5dbe1, #AEBCC9
-  ); */
-}
-
 .bg-slider{
   background-color: rgba(1, 1, 1, .5)
 }
@@ -12,8 +6,8 @@
   background-image: linear-gradient(to right, #AEBCC9, #e8ecf0,#e4e9ec,#d8dad9, #d3d3d4, #d9dbdd, #e8ecf0,#e4e9ec,#d5dbe1, #AEBCC9 );
 
 }
-#about {
-  border-radius: 47px;
+/* #about {
+
   background: #d1d1d1;
   box-shadow: inset 26px 26px 100px #b2b2b2,
               inset -26px -26px 100px #f0f0f0;
@@ -31,8 +25,8 @@ box-shadow:  34px 34px 68px #9dd8ec,
 background: #b7d9e4;
 box-shadow:  34px 34px 68px #9dd8ec,
              -34px -34px 68px #adeeff;
-}
-#mission{
+} */
+/* #mission{
   border-radius: 36px;
 background: #b7d9e4;
 box-shadow:  34px 34px 68px #9dd8ec,
@@ -49,4 +43,4 @@ box-shadow:  34px 34px 68px #9dd8ec,
 background: #b7d9e4;
 box-shadow:  34px 34px 100px #9dd8ec,
              -34px -34px 100px #adeeff;
-}
+} */
