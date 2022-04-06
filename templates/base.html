@@ -36,6 +36,21 @@
                  duration:2000
              });
            </script>
+           <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+           <script>
+             $(document).ready(function(){
+           $( ".delete" ).click(function() {
+             $( "#myTableRow" ).remove();
+             $( "#outbound" ).show();
+             $('#hosi').show();
+             event.preventDefault()
+           });
+           $(".reject").click(function(e) {
+            $('#myTableRow').remove();
+            event.preventDefault()
+           })
+          })
+           </script>
 {% endblock%}
 
 </html>
