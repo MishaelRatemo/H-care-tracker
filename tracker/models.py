@@ -72,6 +72,7 @@ class Registrations(models.Model):
         return self.email
     
 class Order(models.Model):
+    donor_name = models.CharField(max_length=100, null=True)
     order_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(Registrations, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
