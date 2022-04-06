@@ -10,7 +10,7 @@ from .forms import RequestForm
 
 def hshome(request):
 
-    hospital = Hospital.objects.all()
+    hospital = Order.objects.all()
     args = {
         'hospitals': hospital
     }
@@ -50,7 +50,7 @@ def hsrequest(request):
             else:
                 error ="Item not available"
         
-        # return redirect('hshome')
+        return redirect('hshome')
 
     else:
         pass
