@@ -20,16 +20,22 @@ from tracker.models import Registrations
 
 # Create your views here.
 def home(request):
+    loggedin_user =''
     try:
         loggedin_user = request.COOKIES['loggedin']
     except:
         pass
     title= ' Welcome  '
-    user = loggedin_user
-    context ={'user':user,'title':title}
+    # user = loggedin_user
+    context ={'user':loggedin_user,'title':title}
     return render(request, 'index.html', context)
 
 def signup(request):
+    loggedin_user =''
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        pass
     error = ''
     success = ''
     form = RegistrationForm()
@@ -57,11 +63,17 @@ def signup(request):
         'form': form,
         'error': error,
         'success': success,
+        'user': loggedin_user
     }
     return render(request, 'signupform.html', context)
 
 
 def login(request):
+    loggedin_user =''
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        pass
     form = LoginForm()
     error= ''
     if request.method == 'POST':
@@ -90,6 +102,7 @@ def login(request):
     context = {
         'form': form,
         'error':error,
+        'user': loggedin_user
     }
     return render(request, 'logins.html', context)
 
@@ -102,6 +115,13 @@ def profile(request):
     }
     return render(request, 'profile.html', args)
 
+
+
+def logout_view(request):
+        # user = request.COOKIES['loggedin']
+        response = redirect("index")
+        response.delete_cookie('loggedin')
+        return response
 
 '''
 ############################################
