@@ -1,95 +1,121 @@
-{% extends 'base.html' %}
-{% load bootstrap5 %}
-{% load static %}
+{% extends 'base.html' %} {% load bootstrap5 %} {% load static %} } {% block content %} {% if approval %}
+<div class="container-fluid">
+  <h1 class="text-center">Inbound Request</h1>
+  <table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">Request id &nbsp;|</th>
+        <th scope="col">From &nbsp;|</th>
+        <th scope="col">Items &nbsp;|</th>
+        <th scope="col">Quantiy &nbsp;|</th>
+        <!-- <th scope="col">In Store &nbsp;|</th> -->
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for req in requests %}
+      <div>
+        <tr class="req" id="myTableRow">
+          <th scope="row">{{req.pk}}</th>
+          <td>{{req.user}}</td>
+          <td>{{req.item}}</td>
+          <td>{{req.quantity}}</td>
+          <!-- <td>{{req.address}}</td> -->
+          <td>
+            <input
+              type="button"
+              class="btn btn-sm btn-success delete"
+              value="Dispatch"
+              name="Dispatch"
+            />
+            <input
+              type="button"
+              class="btn btn-sm btn-danger reject"
+              value="Reject"
+              name="reject"
+            />
+          </td>
+        </tr>
+      </div>
 
-{% block title %}
-{{title}}    
-{% endblock  %}    
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
-{% block content %}
+<div class="container-fluid mt-5">
+  <h1 class="text-center">Outbound Request</h1>
+  <table class="table table-success table-striped container">
+    <thead>
+      <tr>
+        <th scope="col">Request id &nbsp;|</th>
+        <th scope="col">To &nbsp;|</th>
+        <th scope="col">Items &nbsp;|</th>
+        <th scope="col">Quantiy &nbsp;|</th>
+        <!-- <th scope="col">Status &nbsp;|</th> -->
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="body"></tbody>
+  </table>
+</div>
+{% else %}
+<div class="container-fluid">
+  <h1 class="text-center">Inbound Request</h1>
+  <table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">Request id &nbsp;|</th>
+        <th scope="col">From &nbsp;|</th>
+        <th scope="col">Items &nbsp;|</th>
+        <th scope="col">Quantiy &nbsp;|</th>
+        <!-- <th scope="col">In Store &nbsp;|</th> -->
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 
+<div class="container-fluid mt-5">
+  <h1 class="text-center">Outbound Request</h1>
+  <table class="table table-success table-striped container">
+    <thead>
+      <tr>
+        <th scope="col">Request id &nbsp;|</th>
+        <th scope="col">To &nbsp;|</th>
+        <th scope="col">Items &nbsp;|</th>
+        <th scope="col">Quantiy &nbsp;|</th>
+        <!-- <th scope="col">Status &nbsp;|</th> -->
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="body">
+      {% for req in requests %}
+      <tr class="re" id="outbound" >
+        <th scope="row">{{req.pk}}</th>
+        <td>{{req.user}}</td>
+        <td>{{req.item}}</td>
+        <td>{{req.quantity}}</td>
 
-    <div class="container-fluid ">
-        <h1 class="text-center">
-            Inbound Request
-        </h1>
-        <table class="table container">
-            <thead>
-              <tr>
-                <th scope="col">Request id &nbsp;|</th>
-                <th scope="col">From &nbsp;|</th>
-                <th scope="col">Items &nbsp;|</th>
-                <th scope="col">Quantiy &nbsp;|</th>
-                <!-- <th scope="col">In Store &nbsp;|</th> -->
-                <th scope="col">Actions</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              {% for req in requests  %}
-              <div>
-              <tr class="req" id="myTableRow">
-                <th scope="row">{{req.pk}}</th>
-                <td>{{req.user}}</td>
-                <td>{{req.item}}</td>
-                <td>{{req.quantity}}</td>
-                <!-- <td>{{req.address}}</td> -->
-                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
-                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
-                  </td>
-      
-              </tr>
-            </div>
-                
-              {% endfor %}
-              
-            </tbody>
-          </table>
-
-    </div> 
-    
-    
-    <div class="container-fluid mt-5 ">
-        <h1 class="text-center"> 
-            Outbound Request
-        </h1>
-        <table class="table table-success table-striped container">
-            <thead>
-              <tr>
-                <th scope="col">Request id &nbsp;|</th>
-                <th scope="col">To &nbsp;|</th>
-                <th scope="col">Items &nbsp;|</th>
-                <th scope="col">Quantiy &nbsp;|</th>
-                <!-- <th scope="col">Status &nbsp;|</th> -->
-                <th scope="col">Actions</th>
-
-              </tr>
-            </thead>
-            <tbody class="body">
-              
-
-                {% for req in requests  %}
-              <tr class="re" id="outbound" style="display: none;">
-                <th scope="row">{{req.pk}}</th>
-                <td>{{req.user}}</td>
-                <td>{{req.item}}</td>
-                <td>{{req.quantity}}</td>
-                <!-- <td>{{req.address}}</td> -->
-                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
-                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
-                  </td>
-      
-              </tr>
-      
-                
-        
-            
-      
-                
-              {% endfor %}
-            </tbody>
-          </table>
-
-    </div>
-{% endblock %}
-
+        <!-- <td>{{req.address}}</td> -->
+        <td>
+          <input
+            type="button"
+            class="btn btn-sm btn-success delete"
+            value="Dispatch"
+            name="Dispatch"
+          />
+          <input
+            type="button"
+            class="btn btn-sm btn-danger reject"
+            value="Reject"
+            name="reject"
+          />
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %} {% endblock %} 

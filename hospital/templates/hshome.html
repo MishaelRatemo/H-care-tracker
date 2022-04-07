@@ -22,13 +22,13 @@
       </thead>
       <tbody>
             
-            {% for hosi in hospitals %}
+            {% for order in orders_approved %}
             <tr class="hosi" id="hosi" style="display: none;" >
-              <th scope="row">{{hosi.pk}}</th>
-              <td>{{hosi.user}}</td>
-              <td>{{hosi.item}}</td>
-              <td>{{hosi.quantity}}</td>
-              <td>{{hosi.address}}</td>
+              <th scope="row">{{order.pk}}</th>
+              <td>{{order.user}}</td>
+              <td>{{order.item}}</td>
+              <td>{{order.quantity}}</td>
+              <td>{{order.address}}</td>
               <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
                   <input type="button" class="btn btn-sm btn-danger" value="Acccept">
                 </td> -->

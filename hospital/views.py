@@ -8,12 +8,14 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-@login_required(login_url='/login/')
+# @login_required(login_url='/login/')
 def hshome(request):
 
     hospital = Order.objects.all()
+    orders_approved = Order.objects.filter(status=True)
     args = {
-        'hospitals': hospital
+        'hospitals': hospital,
+        'orders':orders_approved
     }
   
     return render(request,'hshome.html', args)
