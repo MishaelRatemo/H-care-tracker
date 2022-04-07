@@ -21,7 +21,7 @@ from  decouple import  config,Csv
 
 MODE=config("MODE",default='dev')
 SECRET_KEY=config('SECRET_KEY')
-DEBUG=config('DEBUG',default=False, cast=bool)
+DEBUG=config('DEBUG',default=True, cast=bool)
 #developemnt mode
 if config('MODE')=='dev':
     DATABASES={
@@ -42,12 +42,12 @@ else:
        )
    }
     
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
@@ -55,7 +55,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY= 'django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -63,7 +63,7 @@ DEBUG=True
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-
+# ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,7 +74,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tracker',       
+    'django_registration',
+    'corsheaders',
+    'bootstrap5',
+    'fontawesomefree',
+    'tracker',
+    'donor',
+    'about',
+    'contact',
+    'services',    
+    'hospital',     
 ]
 
 MIDDLEWARE = [
@@ -86,9 +95,22 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',    
+    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'hcaretracter.urls'
+
+DATABASES={
+        'default':{
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
+        }
+    }
 
 TEMPLATES = [
     {
@@ -157,12 +179,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals())
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
+
+
+# SECRET_KEY =os.environ.get('SECRET_KEY')
 SECRET_KEY =os.environ.get('SECRET_KEY')
 # ACCOUNT_ACTIVATION_DAYS= int(os.environ.get('ACCOUNT_ACTIVATION_DAYS'))
 # DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
@@ -172,8 +197,48 @@ SECRET_KEY =os.environ.get('SECRET_KEY')
 # EMAIL_PORT= int(os.environ.get('EMAIL_PORT'))
 # EMAIL_USE_TLS=True
 
+
 cloudinary.config(
     cloud_name='mishmish',
     api_key='739237125342173',
     api_secret='0m3FpTW7VNcn3l6_bcja3ztpscw',
 )
+
+
+
+'''
+*************************
+'''
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+}
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+r"^https://\w+\.domain\.com$",
+]
+
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000'
+# ]
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000',
+# )
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
+
+
+'''
+for heroku userbelow configs
+
+'''
+# CORS_ALLOWED_ORIGINS = [
+#     'https://h-care-tracker.herokuapp.com/'
+# ]
