@@ -80,12 +80,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_registration',
     'corsheaders',
+    'django.contrib.gis',
     'tracker',
     'donor',
     'about',
     'contact',
     'services',    
-    'hospital',     
+    'hospital',
+    'markers',     
 ]
 
 MIDDLEWARE = [
@@ -105,13 +107,14 @@ ROOT_URLCONF = 'hcaretracter.urls'
 
 DATABASES={
         'default':{
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'ENGINE': 'django.contrib.gis.db.backends.postgis',
            'NAME': config('DB_NAME'),
            'USER': config('DB_USER'),
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
            'PORT': '',
         }
+        
     }
 
 TEMPLATES = [

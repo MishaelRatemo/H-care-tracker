@@ -16,9 +16,11 @@ def hshome(request):
     except:
         return redirect('login')
     hospital = Order.objects.all()
+    title = 'Hospital Page'
     args = {
         'hospitals': hospital,
         'user': loggedin_user,
+        'title': title,
         
     }
   
