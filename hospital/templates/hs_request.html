@@ -8,9 +8,17 @@
       <div class="col-md-8 mt-5 shadow p-3">
         <form  action="{%url 'request'%}" method="post" enctype="multipart/form-data">
           <div class=" alert-danger">{{error}}</div>
-          <div class=" alert-success">{{success}}</div>
-  
+          <div class=" alert-success">{{success}}</div>  
           {%csrf_token%}
+          <div class="form-group">
+            <select name="item" id="item" class="form-control">
+              
+              {% for item in items  %}
+                <option value="{{item.name}}">{{item.name}}</option>                
+              {% endfor %}
+                
+            </select>
+          </div>
       
           {% bootstrap_form form%}
           <input type="submit" class="btn btn-info btn-md" value="Place Request">

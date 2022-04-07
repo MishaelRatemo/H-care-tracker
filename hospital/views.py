@@ -10,12 +10,18 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 # @login_required(login_url='/login/')
 def hshome(request):
-
+    loggedin_user = ''
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        return redirect('login')
     hospital = Order.objects.all()
     orders_approved = Order.objects.filter(status=True)
     args = {
         'hospitals': hospital,
-        'orders':orders_approved
+        'orders':orders_approved,
+        'user': loggedin_user,
+        
     }
   
     return render(request,'hshome.html', args)
@@ -24,6 +30,12 @@ def services(request):
   return render(request,'services.html')
 
 def hsrequest(request):
+    items = Item.objects.all()
+    loggedin_user = ''
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        return redirect('login')
     error =''
     success = ''
     try:
@@ -39,19 +51,15 @@ def hsrequest(request):
         if get_user== 'No User':
             error ='User not auntenticated'
         else:
-            get_item = Item.objects.filter(name=item)
-            if get_item.exists():
-                for item in get_item:
-                    # print('###################')
-                    # print(item.quantity)
-                    if int(item.quantity) > int(quantity):
-                        new_order = Order(user=current_user,item=item, quantity=quantity)
-                        new_order.save()
-                        success =" Order placed successfully"
-                    else:
-                        error = "Quantity requested exceeds what is in store (" +str( item.quantity) + ")"
+            get_item = Item.objects.get(name=item)
+    
+            if int(get_item.quantity) > int(quantity):
+                new_order = Order(user=current_user,item=item, quantity=quantity)
+                new_order.save()
+                success =" Order placed successfully"
             else:
-                error ="Item not available"
+                error = "Quantity requested exceeds what is in store (" +str( item.quantity) + ")"
+            
         
         return redirect('hshome')
 
@@ -61,5 +69,7 @@ def hsrequest(request):
         'error': error,
         'success': success,
         'form': form,
+        'user':loggedin_user,
+        'items': items,
     }
     return render(request, 'hs_request.html', context)

@@ -24,21 +24,21 @@
       </ul>
     </div>
     <div class="me-4 ">
-      {% if user.is_authenticated %}
+      {% if user != '' %}
         <div class="dropdown  pe-5" >
           <li class="nav-item dropdown d-flex">
             <a class="nav-link dropdown-toggle text-white fs-3 fw-bold " href="#" id="account" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img class="rounded-circle img-fluid nav-img" src="{{ user.profile.profile_image.url }}" style="height:55px"  alt=""> 
               <i class="fa-solid fa-house-medical-circle-check"></i>
-              {{user.username}}
+              {{user}}
             </a>
             <ul class="dropdown-menu " aria-labelledby="account">
               <li><a class="dropdown-item" href="{%url 'index'%}">Home</a></li>
               <li><a class="dropdown-item" href="/hospital/">Hospital</a></li>
               <li><a class="dropdown-item" href="/donor/">Donor</a></li>
-              <li><a class="dropdown-item" href="">Profile</a></li>
+              <!-- <li><a class="dropdown-item" href="">Profile</a></li> -->
               <li><a class="dropdown-item" href="/accounts/password_change/">Change Password</a></li>
-              <li><a class="dropdown-item" href="/accounts/logout/">Logout</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             </ul>
           </li>
           
