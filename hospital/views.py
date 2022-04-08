@@ -15,7 +15,7 @@ def hshome(request):
         loggedin_user = request.COOKIES['loggedin']
     except:
         return redirect('login')
-    hospital = Order.objects.all()
+    hospital = Order.objects.all().order_by('-order_date')
     args = {
         'hospitals': hospital,
         'user': loggedin_user,

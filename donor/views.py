@@ -13,7 +13,7 @@ def donarpage(request):
         return redirect('login')
     title= 'Donor Page'
     
-    requests = Order.objects.all().order_by('order_date')
+    requests = Order.objects.all().order_by('-order_date')
     context ={
         'title': title,
         'requests': requests,
