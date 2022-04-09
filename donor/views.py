@@ -18,11 +18,8 @@ def donarpage(request):
     context ={
         'title': title,
         'requests': requests,
-<<<<<<< HEAD
         'approval':approval_status,
-=======
         'user': loggedin_user,
->>>>>>> d13de79fbf00f05843e7975b48a84f37ac56822e
     }
     if request.GET.get('Dispatch') == 'Dispatch':
         req = Order.objects.get(id=id)
