@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load bootstrap5 %} {% load static %}
+{% block title %}
+{{title}}    
+{% endblock  %}    
 
 {%block content%}
 
@@ -22,13 +25,13 @@
       </thead>
       <tbody>
             
-            {% for order in orders_approved %}
-            <tr class="hosi" id="hosi" style="display: none;" >
-              <th scope="row">{{order.pk}}</th>
-              <td>{{order.user}}</td>
-              <td>{{order.item}}</td>
-              <td>{{order.quantity}}</td>
-              <td>{{order.address}}</td>
+            {% for hosi in hospitals %}
+            <tr class="hosi" id="hosi"  >
+              <th scope="row">{{hosi.pk}}</th>
+              <td>{{hosi.user.name}}</td>
+              <td>{{hosi.item}}</td>
+              <td>{{hosi.quantity}}</td>
+              <td>{{hosi.address}}</td>
               <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
                   <input type="button" class="btn btn-sm btn-danger" value="Acccept">
                 </td> -->

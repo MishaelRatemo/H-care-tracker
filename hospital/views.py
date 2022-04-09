@@ -17,10 +17,12 @@ def hshome(request):
         return redirect('login')
     hospital = Order.objects.all()
     orders_approved = Order.objects.filter(status=True)
+    title = 'Hospital Page'
     args = {
         'hospitals': hospital,
         'orders':orders_approved,
         'user': loggedin_user,
+        'title': title,
         
     }
   
