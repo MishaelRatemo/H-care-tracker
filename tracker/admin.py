@@ -20,6 +20,7 @@ admin.site.register(Donor)
 admin.site.register(Hospital)
 admin.site.register(Registrations)
 admin.site.register(Order)
+# admin.site.register(order_status)
 
 
 # admin.site.register(Merger)

@@ -5,7 +5,7 @@
 
 <div class="container-fluid ">
   <h1 class="text-center">
-      Check Request
+       Request Detail
   </h1>
   <h5><a class=" position-relative top-0 end-0 text-center btn btn-outline-info" href="{%url 'request'%}">Make Request</a></h5>
   <table class="table container">
@@ -16,19 +16,19 @@
           <th scope="col">Items &nbsp;|</th>
           <th scope="col">Quantiy &nbsp;|</th>
           <!-- <th scope="col">In Store &nbsp;|</th> -->
-          <th scope="col">Address</th>
+          <th scope="col">Status</th>
 
         </tr>
       </thead>
       <tbody>
             
             {% for hosi in hospitals %}
-            <tr class="hosi" id="hosi" style="display: none;" >
+            <tr class="hosi" id="hosi"  >
               <th scope="row">{{hosi.pk}}</th>
-              <td>{{hosi.user}}</td>
-              <td>{{hosi.item.name}}</td>
+              <td>{{hosi.donor_name}}</td>
+              <td>{{hosi.item}}</td>
               <td>{{hosi.quantity}}</td>
-              <td>{{hosi.address}}</td>
+              <td>{{hosi.status}}</td>
               <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
                   <input type="button" class="btn btn-sm btn-danger" value="Acccept">
                 </td> -->
