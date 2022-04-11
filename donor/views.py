@@ -1,3 +1,4 @@
+from email.policy import default
 from multiprocessing import context
 from tabnanny import check
 from django.shortcuts import render,redirect
@@ -20,6 +21,7 @@ def donarpage(request):
     context ={
         'title': title,
         'requests': requests,
+        
         'user': loggedin_user,
         'status':status,
     }

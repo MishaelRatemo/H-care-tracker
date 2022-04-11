@@ -18,7 +18,9 @@ def hshome(request):
     hospital = Order.objects.all().order_by('-order_date')
     args = {
         'hospitals': hospital,
+        # 'orders':orders_approved,
         'user': loggedin_user,
+        # 'title': title,
         
     }
   
