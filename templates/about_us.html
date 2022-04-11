@@ -8,14 +8,94 @@
 
 {% block content %}
 
-<main class="container">
-    <h1>
+
+<main class="container-fluid pb-3" id="about">
+    <h1 class=" container-fluid col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center fw-bold">
         {{title}}
+        <pre></pre>
     </h1>
+    
 
     <section>
-        Our story
+        <div class="container-fluid bg-light shadow rounded-3  col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" data-aos="fade-left" data-aos-duration="3000" id="how">
+            <img src="/static/images/icons8-start-line-64.png" alt="">
+            <h3>How we Began</h3>
+            <pre></pre>
+            <p>The idea to start <strong> H.Care Tracker</strong> started from the need of medicine in our villages. We needed medicine urgently in our local clinic and after many days of waiting the supplies that had been ordered had not arrived as scheduled.</p>
+            <pre></pre>
+            <p>This brought about the urgent need to find a system that would allow us to observe the supplies wehad ordered and to be able to track them until they got to their intended destination.</p>
+            <pre></pre>
+
+        </div>
+        <div class="container-fluid bg-light shadow rounded-3  col-xs-6 col-sm-3 col-md-6 col-md-offset-3 text-center" data-aos="fade-right" data-aos-duration="3000"  id="what">
+            <img src="/static/images/icons8-activities-64.png" alt="">
+            <h3>What we Do</h3>
+            <pre></pre>
+            <p>We are a tracking company that provides the service of tracking your supplies from supplier to reciever and to ensure that what has been ordered is exactly what arrives.</p>
+            <pre></pre>
+        </div>
+
     </section>
+    <div class="d-flex flex-wrap justify-content-between">
+        <div class="container-fluid bg-light shadow rounded-3 col-xs-6 col-sm-3 col-md-3 col-md-offset-3 text-center" data-aos="slide-up" data-aos-duration="3000"  id="vision">
+            <img src="/static/images/icons8-vision-64.png" alt="">
+            <h3>Vision</h3>
+            <pre></pre>
+            <p>To get all affordable and equitable supplies to citizens throught all rural areas and settlements.</p>
+            <pre></pre>
+        </div>
+        <div class="container-fluid bg-light shadow rounded-3 col-xs-6 col-sm-3 col-md-3 col-md-offset-3 text-center" data-aos="slide-up" data-aos-duration="3000" id="mission">
+            <img src="/static/images/icons8-mission-64.png" alt="">
+            <h3>Mission</h3>
+            <pre></pre>
+            <p>To build a reputable distribution system that will serve all equally and ensure accountable, equitable distribution of medical supplies.</p>
+            <pre></pre>
+        </div>
+        <div class="container-fluid bg-light shadow rounded-3 col-xs-6 col-sm-3 col-md-3 col-md-offset-3 text-center" data-aos="slide-up" data-aos-duration="3000" id="hq">
+            <img src="/static/images/icons8-headquarters-64.png" alt="">
+            <h3>Our H.Q</h3>
+            <pre></pre>
+            <p>Our offices are currently at Moringa. This is where we run our operations from and for the foreseable future will be held here for ease of access to our generous and wonderful clients.</p>
+            <pre></pre>
+        </div>
+    </div>
 </main>
+    <footer class="bg-dark text-center text-white">
+        <div class="p-4">
+        <section class="">
+            <form action="">
+            <div class="row d-flex justify-content-center">
+    
+                <div class="col-auto">
+                <p class="pt-2">
+                    <strong>Sign up for our newsletter</strong>
+                </p>
+                </div>
+                <div class="col-md-5 col-12">
+                <div class="form-outline form-white mb-4">
+                    <input type="email" id="form5Example21" class="form-control" placeholder="Enter Email address" />
+                </div>
+                </div>
+    
+                <div class="col-auto">
+                
+                <button type="submit" class="btn btn-outline-light mb-4">
+                    Subscribe
+                </button>
+                </div>
+            </div>
+            </form>
+        </section>
+        
+        
+        </div>
+
+    <div class="text-center p-3" style="background-color: rgba(56, 55, 55, 0.2);">
+      © 2022 Copyright Reserved:
+      <a class="text-white" href="h-care-tracker.herokuapp.com">h-care-tracker.com</a>
+    </div>
+   
+    </footer>
+
 
 {% endblock  %}

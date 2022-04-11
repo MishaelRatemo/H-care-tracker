@@ -5,8 +5,9 @@
 
 <div class="container-fluid ">
   <h1 class="text-center">
-      Inbound Request
+      Check Request
   </h1>
+  <h5><a class=" position-relative top-0 end-0 text-center btn btn-outline-info" href="{%url 'request'%}">Make Request</a></h5>
   <table class="table container">
       <thead>
         <tr>
@@ -21,13 +22,13 @@
       </thead>
       <tbody>
             
-            {% for hosy in hospitals  %}
-            <tr>
-              <th scope="row">{{hosy.pk}}</th>
-              <td>{{hosy.donor_name}}</td>
-              <td>{{hosy.item}}</td>
-              <td>{{hosy.quantity}}</td>
-              <td>{{hosy.address}}</td>
+            {% for hosi in hospitals %}
+            <tr class="hosi" id="hosi"  >
+              <th scope="row">{{hosi.pk}}</th>
+              <td>{{hosi.user}}</td>
+              <td>{{hosi.item}}</td>
+              <td>{{hosi.quantity}}</td>
+              <td>{{hosi.donor_name}}</td>
               <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
                   <input type="button" class="btn btn-sm btn-danger" value="Acccept">
                 </td> -->
@@ -41,18 +42,5 @@
     </table>
 
 </div>
-<!-- 
-<div   class="">
-<div class="headings container">
-  <h1 class="text-center text-primary mb-5">Check Request</h1>
-  <div class="d-flex justify-content-around mt-5">
-  <h4 class="border-dark border-0 border-2 border-end pe-5">Donor</h4>
-  <h4 class="border-dark border-0 border-2 border-end pe-5">Equipment</h4>
-  <h4 class="border-dark border-0 border-2 border-end pe-5">Status</h4>
-  <h4 class="border-dark border-0 border-2 border-end pe-5">Time Frame</h4>
-  <h4 class="border-dark border-0 border-2 border-end pe-5">Live Track</h4>
-</div> 
-<hr>
-</div>
-</div> -->
+
 {%endblock%}

@@ -19,6 +19,8 @@ import  django_heroku
 from  decouple import  config,Csv
 
 
+SECRET_KEY='django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
+# SECRET_KEY='django-insecure-#+nllh_^r_$kk21iw71bx4wuz^h21+*4uvn0!ub(4jwf59dz&o'
 MODE=config("MODE",default='dev')
 SECRET_KEY=config('SECRET_KEY')
 DEBUG=config('DEBUG',default=True, cast=bool)
@@ -67,6 +69,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'fontawesomefree',  
+    'bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,8 +80,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_registration',
     'corsheaders',
-    'bootstrap5',
-    'fontawesomefree',
     'tracker',
     'donor',
     'about',
@@ -103,12 +105,12 @@ ROOT_URLCONF = 'hcaretracter.urls'
 
 DATABASES={
         'default':{
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'ENGINE': 'django.contrib.gis.db.backends.postgis',
            'NAME': config('DB_NAME'),
            'USER': config('DB_USER'),
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
-           'PORT': '',
+           'PORT': '5432',
         }
     }
 
@@ -185,17 +187,19 @@ STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
+# GDAL_LIBRARY_PATH = '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
+# GEOS_LIBRARY_PATH = '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
 
 
 # SECRET_KEY =os.environ.get('SECRET_KEY')
 SECRET_KEY =os.environ.get('SECRET_KEY')
-# ACCOUNT_ACTIVATION_DAYS= int(os.environ.get('ACCOUNT_ACTIVATION_DAYS'))
-# DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
-# EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST=os.environ.get('EMAIL_HOST')
-# EMAIL_PORT= int(os.environ.get('EMAIL_PORT'))
-# EMAIL_USE_TLS=True
+ACCOUNT_ACTIVATION_DAYS= os.environ.get('ACCOUNT_ACTIVATION_DAYS')
+DEFAULT_FROM_EMAIL=os.environ.get('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST=os.environ.get('EMAIL_HOST')
+EMAIL_PORT= os.environ.get('EMAIL_PORT')
+EMAIL_USE_TLS=True
 
 
 cloudinary.config(

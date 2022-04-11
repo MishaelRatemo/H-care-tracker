@@ -20,46 +20,29 @@
                 <th scope="col">From &nbsp;|</th>
                 <th scope="col">Items &nbsp;|</th>
                 <th scope="col">Quantiy &nbsp;|</th>
-                <th scope="col">In Store &nbsp;|</th>
+                <!-- <th scope="col">In Store &nbsp;|</th> -->
                 <th scope="col">Actions</th>
 
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Nairobi HP</td>
-                <td>Sterilizers</td>
-                <td>150</td>
-                <td>2300</td>
-                <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
-                    <input type="button" class="btn btn-sm btn-danger" value="Acccept">
+              {% for req in requests  %}
+              <div>
+              <tr class="req" id="myTableRow">
+                <th scope="row">{{req.pk}}</th>
+                <td>{{req.user.name}}</td>
+                <td>{{req.item}}</td>
+                <td>{{req.quantity}}</td>
+                <!-- <td>{{req.address}}</td> -->
+                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
+                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
                   </td>
-
+      
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Komarock Hospital</td>
-                <td>Defibrillator</td>
-                <td>20</td>
-                <td>579</td>
-                <td> <input type="button" class="btn btn-sm btn-success" value="Acccept">  
-                    <input type="button" class="btn btn-sm btn-danger" value="Acccept"> 
-                </td>
-
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td >Kikuyu</td>
-                <td>Retinoscope</td>
-                <td>@39</td>
-                <td>199</td>
-
-                <td> <input type="button" class="btn btn-sm btn-success" value="Acccept">  
-                    <input type="button" class="btn btn-sm btn-danger" value="Acccept"> 
-                </td>
-
-              </tr>
+            </div>
+                
+              {% endfor %}
+              
             </tbody>
           </table>
 
@@ -77,30 +60,36 @@
                 <th scope="col">To &nbsp;|</th>
                 <th scope="col">Items &nbsp;|</th>
                 <th scope="col">Quantiy &nbsp;|</th>
-                <th scope="col">Status &nbsp;|</th>
+                <!-- <th scope="col">Status &nbsp;|</th> -->
                 <th scope="col">Actions</th>
 
               </tr>
             </thead>
-            <tbody>
-              {% for req in requests  %}
-              <tr>
+            <tbody class="body">
+              
+
+                {% for req in requests  %}
+              <tr class="re" id="outbound" style="display: none;">
                 <th scope="row">{{req.pk}}</th>
-                <td>{{req.donor_name}}</td>
+                <td>{{req.user}}</td>
                 <td>{{req.item}}</td>
                 <td>{{req.quantity}}</td>
-                <td>{{req.address}}</td>
-                <!-- <td> <input type="button" class="btn btn-sm btn-success" value="Acccept"> 
-                    <input type="button" class="btn btn-sm btn-danger" value="Acccept">
-                  </td> -->
+                <!-- <td>{{req.address}}</td> -->
+                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
+                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
+                  </td>
       
               </tr>
       
                 
-              {% endfor %}
+        
+            
+      
                 
+              {% endfor %}
             </tbody>
           </table>
 
     </div>
 {% endblock %}
+

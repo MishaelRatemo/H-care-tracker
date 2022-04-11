@@ -1,3 +1,6 @@
+from operator import ne
+import re
+from django.http import HttpResponse
 
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User,Group
@@ -15,18 +18,24 @@ from django.contrib.auth.hashers import  make_password, check_password
 from tracker.forms import LoginForm, RegistrationForm
 from tracker.models import Registrations
 
-
 # Create your views here.
 def home(request):
-    # try:
-    #     loggedin_user = request.COOKIES['loggedin']
-    # except:
-    #     pass
-    title= ' Welcome  ' #+ loggedin_user
-    context ={ 'title': title}
+    loggedin_user =''
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        pass
+    title= ' Welcome  '
+    # user = loggedin_user
+    context ={'user':loggedin_user,'title':title}
     return render(request, 'index.html', context)
 
 def signup(request):
+    loggedin_user =''
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        pass
     error = ''
     success = ''
     form = RegistrationForm()
@@ -35,7 +44,8 @@ def signup(request):
         name = request.POST.get('name')
         account_type = request.POST.get('account_type')
         email = request.POST.get('email')
-        contact = request.POST.get('contact')        
+        contact = request.POST.get('contact') 
+        address = request.POST.get('address')               
         password = request.POST.get('password')
         pass_hash = make_password(password)
         
@@ -44,20 +54,26 @@ def signup(request):
             error = 'user with this email already exists'
             return redirect('signup')
         else:
-            new_user = Registrations(name=name, account_type=account_type, email=email, contact=contact,password=pass_hash)
+            new_user = Registrations(name=name, account_type=account_type, email=email, contact=contact, address=address,password=pass_hash)
             new_user.save()
             success = ' User Registered successfully'
-       
+        return redirect('login')
         
     context = {
         'form': form,
         'error': error,
         'success': success,
+        'user': loggedin_user
     }
     return render(request, 'signupform.html', context)
 
 
 def login(request):
+    loggedin_user =''
+    try:
+        loggedin_user = request.COOKIES['loggedin']
+    except:
+        pass
     form = LoginForm()
     error= ''
     if request.method == 'POST':
@@ -86,6 +102,7 @@ def login(request):
     context = {
         'form': form,
         'error':error,
+        'user': loggedin_user
     }
     return render(request, 'logins.html', context)
 
@@ -98,6 +115,13 @@ def profile(request):
     }
     return render(request, 'profile.html', args)
 
+
+
+def logout_view(request):
+        # user = request.COOKIES['loggedin']
+        response = redirect("index")
+        response.delete_cookie('loggedin')
+        return response
 
 '''
 ############################################
@@ -172,3 +196,17 @@ def user_details(request,pk):
     elif request.method == 'DELETE':
         profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+def contact_us(request):
+    if request.method=="POST":
+        contact=Contact()
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject') 
+        contact.name=name
+        contact.email=email
+        contact.subject=subject
+        contact.save()
+        
+        return HttpResponse("Thanks for Contacting US")
+    return render(request, 'contact_us.html')

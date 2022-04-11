@@ -1,16 +1,86 @@
-{% extends 'base.html' %}
-{% load bootstrap5 %}
-{% load static %}
+{% extends "base.html" %}
+{% load bootstrap5 %} {% load static %}
+<link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-{% block title %}
-{{title}}    
-{% endblock  %}    
+{%block content%}
+<div class="container-fluid d-flex"  >
+    <div style="margin-top: 150px;" class="col-md-6 ms-5 text-center" data-aos="slide-right" data-aos-duration="3000">
+        <h2 style="color: deepskyblue;">H-Care Tracker</h2>
+      <h5><i class="fw-bold"><u>OUR SERVICES</u></i></h5>
+      <p>We make it easier for you to keep records of your health supplies and track them through the process of request until it arrives at your doorstep. We make inventory and record keeping seem as easy as a click of a button.</p>
+  </div>
+  <img style="overflow-x: hidden;" class="img-fluid img-responsive mt-2" width="60%" src="/static/images/Rectangle.jpg" alt="">
+</div>
 
-{% block content %}
-<main class="container">
-    <h1>
-        {{title}}    
-    </h1>   
-</main>
+<div class="container-fluid d-flex justify-content-around mb-5 mt-3">
+  <div class="card shadow-lg rounded-3 border-0"  data-aos="zoom-in" data-aos-duration="3000" style="width: 18rem;">
+    <div class="card-body text-center">
+   
+      <h5 class="card-title">Inventory</h5>
+      <i class="fas fa-id-badge display-3 text-center fa-thin mb-2"></i>
+      <h6 style="color: deepskyblue;" class="card-subtitle mb-2">inventories</h6>
+      <p class="card-text">
+        All the items, goods, merchandise, and materials held by a donor for selling to hospitals to earn a profit.</p>
+    </div>
+  </div>
 
-{% endblock  %}
+    <div class="card shadow-lg rounded-3 border-0"  data-aos="zoom-in" data-aos-duration="3000" style="width: 18rem;">
+      <div class="card-body text-center">
+        
+        <h5 class="card-title">Records</h5>
+        <i class="fa fa-clipboard display-3 fa-thin mb-2" aria-hidden="true"></i>
+        <h6 style="color: deepskyblue;" class="card-subtitle mb-2">record keeping</h6>
+        <p class="card-text">We manage and are responsible for the efficient and systematic control of the creation, receipt, maintenance, use and disposition of records, including processes.</p>
+      </div>
+       </div>
+
+      <div class="card shadow-lg rounded-3 border-0"  data-aos="zoom-in" data-aos-duration="3000" style="width: 18rem;">
+        <div class="card-body text-center">
+          
+          <h5 class="card-title">Tracking</h5>
+          <i class="fas fa-shuttle-van display-3 text-center fa-thin mb-2"></i>
+          <h6 style="color: deepskyblue;" class="card-subtitle mb-2">map tracking</h6>
+          <p class="card-text">Using a process automation platform we define and track processes and the status of equipments.
+            </p>
+        </div>
+      </div>
+</div>
+
+<footer class="bg-dark text-center text-white">
+  <div class=" p-4">
+  <section class="">
+      <form action="">
+      <div class="row d-flex justify-content-center">
+
+          <div class="col-auto">
+          <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+          </p>
+          </div>
+          <div class="col-md-5 col-12">
+          <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example21" class="form-control" placeholder="Enter Email address" />
+          </div>
+          </div>
+
+          <div class="col-auto">
+          
+          <button type="submit" class="btn btn-outline-light mb-4">
+              Subscribe
+          </button>
+          </div>
+      </div>
+      </form>
+  </section>
+  
+  
+  </div>
+
+<div class="text-center p-3" style="background-color: rgba(56, 55, 55, 0.2);">
+© 2022 Copyright Reserved:
+<a class="text-white" href="h-care-tracker.herokuapp.com">h-care-tracker.com</a>
+</div>
+
+</footer>
+
+{%endblock%}

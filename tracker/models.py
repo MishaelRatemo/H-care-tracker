@@ -62,6 +62,7 @@ class Registrations(models.Model):
     account_type = models.CharField(choices=account_type, max_length=50)
     email = models.EmailField(max_length=100, unique=True)
     contact = models.CharField(max_length=16)
+    address = models.CharField(max_length=200)
     password = models.CharField(max_length=300)
     
     class Meta:
@@ -71,6 +72,7 @@ class Registrations(models.Model):
         return self.email
     
 class Order(models.Model):
+    donor_name = models.CharField(max_length=100, null=True)
     order_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(Registrations, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
