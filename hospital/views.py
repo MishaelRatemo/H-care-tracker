@@ -1,11 +1,11 @@
 from multiprocessing import context
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponse
 import hospital
 from hospital.models import Hospital
 from tracker.models import Item, Order, Registrations
 from .forms import RequestForm
 from django.contrib.auth.decorators import login_required
-
+from django.core.serializers import  serialize
 
 # Create your views here.
 # @login_required(login_url='/login/')
@@ -77,3 +77,7 @@ def hsrequest(request):
         'donors':donor,
     }
     return render(request, 'hs_request.html', context)
+
+def hospital_dataset(request):
+    hospitals = serialize('geojson',Hospital.objects.all())
+    return HttpResponse(hospitals, content_type='json')
