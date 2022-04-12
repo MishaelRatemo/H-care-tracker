@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from tracker.views import logout_view
+from hospital.views import  hospital_dataset
 
 from users import urls
 
@@ -32,6 +33,9 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('services/', include('services.urls')), 
     path('maps/', include('markers.urls')) , 
-    path('logout',logout_view,name="logout") 
+    path('logout',logout_view,name="logout"),
+    
+    path('hospital_data/', hospital_dataset, name='hospitals'),
+     
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

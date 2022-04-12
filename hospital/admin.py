@@ -1,6 +1,10 @@
-from django.contrib import admin
 
 from hospital.models import Hospital
+from django.contrib.gis import admin
 
 # Register your models here.
-admin.site.register(Hospital)
+@admin.register(Hospital)
+class mapsAdmin(admin.GISModelAdmin):
+    list_display = ('name','location')
+    
+    

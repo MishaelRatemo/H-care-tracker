@@ -1,0 +1,42 @@
+{% load leaflet_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js" integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Hospitals In Nairobi</title>
+</head>
+<style>
+    #gis{
+        width: 80%;
+        height: 620px;
+        margin: 0 auto;
+    }
+</style>
+
+<body>
+    <main class="container" id="gis">
+        <h1>
+            Nairobi health Centers
+        </h1>
+        <script type="text/javascript">
+            function my_layers(map, options){
+                var dataset = new L.GeoJSON.AJAX("{% url 'hospitals' %}",{
+                    onEachFeature: function (feature,layer){
+                        layer.bindPopup(feature.properties.name.toString())
+                    }
+                });
+                dataset.addTo(map);
+            }
+        </script>
+            {% leaflet_map 'gis' callback='window.my_layers' %}          
+    </main>
+    
+</body>
+</html>

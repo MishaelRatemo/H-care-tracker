@@ -15,3 +15,6 @@ install:
 
 live:
 	python manage.py livereload
+
+super:
+	python manage.py createsuperuser

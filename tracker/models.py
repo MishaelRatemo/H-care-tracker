@@ -45,11 +45,6 @@ class Donor(models.Model):
     contact = models.CharField(max_length=16)
     store= models.ForeignKey(Store, on_delete=models.CASCADE)
     
-    
-class Hospital(models.Model):
-    hospital_name=models.CharField(max_length=255)
-    address = models.CharField(max_length=100)
-    
      
 class Registrations(models.Model):
     DONOR = 'DONOR'

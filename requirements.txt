@@ -22,3 +22,5 @@ soupsieve==2.3.1
 sqlparse==0.4.2
 urllib3==1.26.9
 whitenoise==6.0.0
+-e git+https://github.com/makinacorpus/django-leaflet.git@bb235e1cb3d9e449cf38f58b75dd6e98082eb799#egg=django_leaflet
+

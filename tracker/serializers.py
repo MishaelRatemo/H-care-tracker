@@ -27,14 +27,14 @@ class DonerSerializers(serializers.ModelSerializer):
         model = Donor
         fields='__all__'
 
-class HospitalSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Hospital
-        fields='__all__'
+# class HospitalSerializers(serializers.ModelSerializer):
+#     class Meta:
+#         model = Hospital
+#         fields='__all__'
         
 
-class StoreSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Hospital
-        fields='__all__'
+# class StoreSerializers(serializers.ModelSerializer):
+#     class Meta:
+#         model = Hospital
+#         fields='__all__'
         
