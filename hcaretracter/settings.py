@@ -80,12 +80,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_registration',
     'corsheaders',
+    'django.contrib.gis',
     'tracker',
     'donor',
     'about',
     'contact',
     'services',    
-    'hospital',     
+    'hospital',
+    'markers',     
 ]
 
 MIDDLEWARE = [
@@ -112,6 +114,7 @@ DATABASES={
            'HOST': config('DB_HOST'),
            'PORT': '5432',
         }
+        
     }
 
 TEMPLATES = [

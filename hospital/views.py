@@ -18,7 +18,9 @@ def hshome(request):
     hospital = Order.objects.all().order_by('-order_date')
     args = {
         'hospitals': hospital,
+        # 'orders':orders_approved,
         'user': loggedin_user,
+        # 'title': title,
         
     }
   
@@ -29,6 +31,7 @@ def services(request):
 
 def hsrequest(request):
     items = Item.objects.all()
+    donor = Registrations.objects.filter(account_type='DONOR')
     loggedin_user = ''
     try:
         loggedin_user = request.COOKIES['loggedin']
@@ -46,13 +49,15 @@ def hsrequest(request):
     if request.method == 'POST':
         quantity = request.POST.get('quantity')
         item = request.POST.get('item')
+        donor = request.POST.get('donor')
+        
         if get_user== 'No User':
             error ='User not auntenticated'
         else:
             get_item = Item.objects.get(name=item)
     
             if int(get_item.quantity) > int(quantity):
-                new_order = Order(user=current_user,item=item, quantity=quantity)
+                new_order = Order(user=current_user,item=item, quantity=quantity, donor_name=donor)
                 new_order.save()
                 success =" Order placed successfully"
             else:
@@ -69,5 +74,6 @@ def hsrequest(request):
         'form': form,
         'user':loggedin_user,
         'items': items,
+        'donors':donor,
     }
     return render(request, 'hs_request.html', context)

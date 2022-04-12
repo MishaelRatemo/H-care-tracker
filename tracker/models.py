@@ -77,4 +77,4 @@ class Order(models.Model):
     user = models.ForeignKey(Registrations, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
     item = models.CharField(max_length=200, blank=True)
-    
+    status = models.CharField(max_length=50, default='pending')

@@ -30,7 +30,8 @@ urlpatterns = [
     path('hospital/', include('hospital.urls')),    
     path('about/', include('about.urls')),
     path('contact/', include('contact.urls')),
-    path('services/', include('services.urls')),   
+    path('services/', include('services.urls')), 
+    path('maps/', include('markers.urls')) , 
     path('logout',logout_view,name="logout") 
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

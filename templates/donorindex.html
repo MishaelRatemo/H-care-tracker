@@ -1,14 +1,7 @@
-{% extends 'base.html' %}
-{% load bootstrap5 %}
-{% load static %}
-
-{% block title %}
-{{title}}    
-{% endblock  %}    
-
-{% block content %}
-
-
+{% extends 'base.html' %} 
+{% load bootstrap5 %} 
+{% load static %} 
+{% block content %} 
     <div class="container-fluid ">
         <h1 class="text-center">
             Inbound Request
@@ -22,33 +15,33 @@
                 <th scope="col">Quantiy &nbsp;|</th>
                 <!-- <th scope="col">In Store &nbsp;|</th> -->
                 <th scope="col">Actions</th>
-
               </tr>
             </thead>
             <tbody>
-              {% for req in requests  %}
-              <div>
-              <tr class="req" id="myTableRow">
-                <th scope="row">{{req.pk}}</th>
-                <td>{{req.user.name}}</td>
-                <td>{{req.item}}</td>
-                <td>{{req.quantity}}</td>
-                <!-- <td>{{req.address}}</td> -->
-                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
-                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
-                  </td>
-      
-              </tr>
-            </div>
-                
+              {% for req in requests  %}                    
+                    {% if req.status == 'pending' %}
+                    <div>
+                      <tr class="req" id="myTableRow">
+                        <th scope="row">{{req.pk}}</th>
+                        <td>{{req.user.name}}</td>
+                        <td>{{req.item}}</td>
+                        <td>{{req.quantity}}</td>
+                        <!-- <td>{{req.address}}</td> -->
+                        <td>
+                          <a href="{% url 'dispatch' req.id %}">
+                            <input type="button" class="btn btn-sm btn-success " value="Dispatch"  name="Dispatch"> 
+                          </a>
+                          <a href="{% url 'rejectreq' req.id %}">
+                            <input type="button" class="btn btn-sm btn-danger " value="Reject" name="reject">
+                          </a>
+                        </td>
+                      </tr>
+                    </div>                      
+                    {% endif %}               
               {% endfor %}
-              
             </tbody>
           </table>
-
-    </div> 
-    
-    
+    </div>     
     <div class="container-fluid mt-5 ">
         <h1 class="text-center"> 
             Outbound Request
@@ -61,35 +54,30 @@
                 <th scope="col">Items &nbsp;|</th>
                 <th scope="col">Quantiy &nbsp;|</th>
                 <!-- <th scope="col">Status &nbsp;|</th> -->
-                <th scope="col">Actions</th>
-
+                <th scope="col">Status</th>
               </tr>
             </thead>
-            <tbody class="body">
-              
-
-                {% for req in requests  %}
-              <tr class="re" id="outbound" style="display: none;">
-                <th scope="row">{{req.pk}}</th>
-                <td>{{req.user}}</td>
-                <td>{{req.item}}</td>
-                <td>{{req.quantity}}</td>
-                <!-- <td>{{req.address}}</td> -->
-                <td> <input type="button" class="btn btn-sm btn-success delete" value="Dispatch" name="Dispatch"> 
-                    <input type="button" class="btn btn-sm btn-danger reject" value="Reject" name="reject">
-                  </td>
-      
-              </tr>
-      
-                
-        
-            
-      
-                
+            <tbody class="body">  
+              {% for req in requests  %}
+                {% if req.status != 'pending' %}
+                    <tr class="re" id="outbound" >
+                      <th scope="row">{{req.pk}}</th>
+                      <td>{{req.user}}</td>
+                      <td>{{req.item}}</td>
+                      <td>{{req.quantity}}</td>
+                      <!-- <td>{{req.address}}</td> -->
+                      <td>
+                        {% if req.status == 'Rejected' %}
+                          <span class="text-light bg-danger p-1">{{req.status}}</span>
+                        {% else %}
+                          <span class="text-light bg-success p-1">{{req.status}}</span>                          
+                        {% endif %}
+                      </td>     
+                    </tr>
+                {% endif %}              
               {% endfor %}
             </tbody>
           </table>
-
     </div>
 {% endblock %}
 

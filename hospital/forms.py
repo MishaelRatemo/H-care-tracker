@@ -8,5 +8,5 @@ from .models import Hospital
 class RequestForm(forms.ModelForm):
     class Meta:
         model = Order
-        exclude = ['user','order_date','item']
+        exclude = ['user','order_date','item', 'donor_name', 'status']
       
