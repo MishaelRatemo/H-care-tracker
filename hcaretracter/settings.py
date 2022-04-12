@@ -87,7 +87,8 @@ INSTALLED_APPS = [
     'contact',
     'services',    
     'hospital',
-    'markers',     
+    'markers',
+    'leaflet',     
 ]
 
 MIDDLEWARE = [
@@ -209,7 +210,15 @@ cloudinary.config(
     api_secret='0m3FpTW7VNcn3l6_bcja3ztpscw',
 )
 
-
+LEAFLET_CONFIG={
+    'DEFAULT_CENTER': (-0.314986, 36.822510),
+    'DEFAULT_ZOOM': 8,
+    'MAX_ZOOM': 20,
+    'MIN_ZOOM':3,
+    'SCALE': 'both',
+    'ATTRIBUTION_PREFIX': 'Inspired by H.care Trackers',
+    'MINIMAP': True,
+}
 
 '''
 *************************
