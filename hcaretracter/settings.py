@@ -28,12 +28,12 @@ DEBUG=config('DEBUG',default=True, cast=bool)
 if config('MODE')=='dev':
     DATABASES={
         'default':{
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
            'NAME': config('DB_NAME'),
            'USER': config('DB_USER'),
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
-           'PORT': '',
+           'PORT': '5432',
         }
     }
 #production mode
@@ -185,8 +185,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# django_heroku.settings(locals())
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
