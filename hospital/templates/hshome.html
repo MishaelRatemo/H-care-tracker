@@ -11,7 +11,7 @@
         </h1>
         <h5><a class=" position-relative top-0 end-0 text-center btn btn-outline-info" href="{%url 'request'%}">Make Request</a></h5>
         <table class="table container">
-            <thead>
+            <thead class="bg-dark text-light">
               <tr>
                 <th scope="col">Request id &nbsp;|</th>
                 <th scope="col">From &nbsp;|</th>
@@ -30,6 +30,8 @@
                     <td>{{hosi.quantity}}</td>
                     <td>{{hosi.status}}</td>          
                   </tr>
+                  {%empty%}
+                    <tr>No orders have been made  </tr>
                   {% endfor %}
             </tbody>
           </table>
