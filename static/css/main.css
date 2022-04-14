@@ -6,7 +6,7 @@
   background-image: linear-gradient(to right, #AEBCC9, #e8ecf0,#e4e9ec,#d8dad9, #d3d3d4, #d9dbdd, #e8ecf0,#e4e9ec,#d5dbe1, #AEBCC9 );
 
 }
-.top, .toplogin{
+.top, .bottomlogin{
   height: 50%;
   background-color: #0CCAF0;
   width: 40%;
@@ -17,11 +17,21 @@
  right:0%;
  z-index: -1;
 }
-.toplogin{
-  border-bottom-left-radius: 100% 100%;
+.bottomlogin{
   position: absolute;
+  bottom: 0%;
+  border-top-right-radius: 100% 100%;
   z-index: -1;
- }
+}
+.toplogin{
+  height: 20%;
+  background-color: #0CCAF0;
+  width: 20%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  z-index: -1;
+}
 
 .pro{  
     color: #000;
