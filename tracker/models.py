@@ -73,3 +73,10 @@ class Order(models.Model):
     quantity = models.IntegerField(default=0)
     item = models.CharField(max_length=200, blank=True)
     status = models.CharField(max_length=50, default='pending')
+
+
+
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
+    

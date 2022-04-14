@@ -6,7 +6,7 @@ from .models import (
     Donor,
     Registrations,
     Order,   
-    
+    NewsLetterRecipients
 )
 
 from. models import  *
@@ -18,7 +18,7 @@ admin.site.register(Store)
 admin.site.register(Donor)
 admin.site.register(Registrations)
 admin.site.register(Order)
-# admin.site.register(order_status)
+admin.site.register(NewsLetterRecipients)
 
 
 # admin.site.register(Merger)

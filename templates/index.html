@@ -7,11 +7,20 @@
 {{title}}
     
 {% endblock  %}
-    
+<script src=""></script>
+<script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>    
 
 {% block content %}
 
 <main class="bdy">
+  <div class="">
+    <!-- <form action="{% url 'newsletter' %}" method="post">
+        {% csrf_token %}
+        
+        {{newsletter}}
+        <input type="submit" class="btn btn-primary" value="Subscribe">
+    </form>
+</div> -->
     <div class="container">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -100,7 +109,7 @@
        </div>
     
        {% comment %} Footer goes here {% endcomment %}
-        <footer class="bg-dark text-center text-white">
+        <footer class="bg-dark text-center mt-5 text-white">
             <div class="container p-4">
             <section class="">
                 <form action="">
@@ -112,9 +121,14 @@
                     </p>
                     </div>
                     <div class="col-md-5 col-12">
-                    <div class="form-outline form-white mb-4">
-                        <input type="email" id="form5Example21" class="form-control" placeholder="Enter Email address" />
-                    </div>
+                      <!-- <div class="shadow  p-5 m-auto w-50 rtounded" style="background-color:rgb(255, 255, 255)">
+                        <form action="{% url 'newsletter' %}" method="post">
+                            {% csrf_token %}
+                            
+                            {{newsletter}}
+                            <input type="submit" class="btn btn-primary" value="Subscribe">
+                        </form>
+                    </div> -->
                     </div>
         
                     <div class="col-auto">
@@ -132,7 +146,7 @@
     
         <div class="text-center p-3" style="background-color: rgba(56, 55, 55, 0.2);">
           © 2022 Copyright Reserved:
-          <a class="text-white" href="h-care-tracker.herokuapp.com">h-care-tracker.com</a>
+          <a class="text-white" href="hcaretracker.herokuapp.com">h-care-tracker.com</a>
         </div>
        
         </footer>
@@ -143,3 +157,8 @@
     
     
 {% endblock  %} 
+
+<!-- {% block scripts %}
+ {{block.super}}
+  <script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
+{% endblock %} -->
