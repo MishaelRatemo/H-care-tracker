@@ -106,17 +106,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'hcaretracter.urls'
 
-DATABASES={
-        'default':{
-           'ENGINE': 'django.contrib.gis.db.backends.postgis',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
-           'HOST': config('DB_HOST'),
-           'PORT': '5432',
-        }
-        
-    }
 
 TEMPLATES = [
     {
@@ -211,8 +200,8 @@ cloudinary.config(
 )
 
 LEAFLET_CONFIG={
-    'DEFAULT_CENTER': (-0.314986, 36.822510),
-    'DEFAULT_ZOOM': 8,
+    'DEFAULT_CENTER': (-1.284468, 36.884371),#36.884371 -1.284468
+    'DEFAULT_ZOOM': 13,
     'MAX_ZOOM': 20,
     'MIN_ZOOM':3,
     'SCALE': 'both',

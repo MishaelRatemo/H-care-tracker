@@ -15,8 +15,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import *
 from django.contrib.auth.hashers import  make_password, check_password
-from tracker.forms import LoginForm, RegistrationForm
-from tracker.models import Registrations
+from tracker.forms import LoginForm, NewsLetterForm, RegistrationForm
+from tracker.models import Registrations, NewsLetterRecipients
+from .email import  send_welcome_email
+from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
@@ -26,8 +28,12 @@ def home(request):
     except:
         pass
     title= ' Welcome  '
+    form = NewsLetterForm()
     # user = loggedin_user
-    context ={'user':loggedin_user,'title':title}
+    context ={'user':loggedin_user,
+              'title':title, 
+              'newsletter': form,
+              }
     return render(request, 'index.html', context)
 
 def signup(request):
@@ -105,6 +111,19 @@ def login(request):
         'user': loggedin_user
     }
     return render(request, 'logins.html', context)
+
+def newsletter(request):
+    name = request.POST.get('your_name')
+    email = request.POST.get('email')
+    
+    recipient = NewsLetterRecipients(name=name,email=email)
+    recipient.save()
+    send_welcome_email(name, email)
+    data = {'success': 'You have been successfully added to mailing list'}
+    return JsonResponse(data)
+
+
+
 
 def profile(request):
     userprofile= ' Profile'

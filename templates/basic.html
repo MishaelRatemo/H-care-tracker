@@ -20,7 +20,6 @@
   {% endblock %}
 </head>
 <body >
-  {% include 'navbar.html' %}
     {% block content %} 
         <!-- Content goes here -->
     {%endblock%}
@@ -29,7 +28,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
           {% bootstrap_javascript %}
           <script src="{% static 'js/main.js' %}"></script>
-          
            <!-- AOS JS -->
            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
            <script>

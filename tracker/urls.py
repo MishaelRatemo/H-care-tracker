@@ -19,6 +19,7 @@ urlpatterns = [
     path('accounts/profile/', views.profile, name='profile'),
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
+    path('ajax/newsletter/', views.newsletter, name='newsletter'),
     
     # path('allusers/',UserViewSet.as_view(), name='users'),
     
