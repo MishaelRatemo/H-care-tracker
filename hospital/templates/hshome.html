@@ -4,7 +4,52 @@
 {{title}}    
 {% endblock  %}    
 
-{%block content%}
+  
+{%block content%}       
+      <button type="button" class="btn btn-lg btn-outline-info  " data-bs-toggle="modal" data-bs-target="#makeorder">
+        Make Order
+      </button>
+      <div class="modal fade" id="makeorder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-info ">
+              <h5 class="modal-title pl-5 text-center text-white fw-bolder" id="staticBackdropLabel">Making orders</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="orderform"  action="{%url 'request'%}" method="post" enctype="multipart/form-data">
+                <div class=" alert-danger">{{error}}</div>
+                <div class=" alert-success">{{success}}</div>  
+                {%csrf_token%}
+                <div class="form-group">
+                  <label class="fw-bolder" for="item">Item </label>
+                  <select name="item" id="item" class="form-control">
+                    {% for item in items  %}
+                      <option value="{{item.name}}">{{item.name}}</option>                
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="donor">Donor Name</label>
+                  <select name="donor" id="donor" class="form-control">              
+                    {% for donor in donors  %}
+                      <option value="{{donor.name}}">{{donor.name}}</option>                
+                    {% endfor %}  
+                  </select>
+                </div>
+                {% bootstrap_form form%}
+                <!-- <input type="submit" class="btn btn-info btn-md" value="Place Order"> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button form="orderform" type="submit" class="btn btn-info">Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <div class="container-fluid ">
         <h1 class="text-center">
             Request Detail
@@ -37,4 +82,5 @@
           </table>
           {% include 'progress.html' %}
       </div>
+      {% include 'footer.html' %}
 {%endblock%}

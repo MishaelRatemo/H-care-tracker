@@ -28,12 +28,12 @@ DEBUG=config('DEBUG',default=True, cast=bool)
 if config('MODE')=='dev':
     DATABASES={
         'default':{
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
            'NAME': config('DB_NAME'),
            'USER': config('DB_USER'),
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
-           'PORT': '',
+           'PORT': '5432',
         }
     }
 #production mode
@@ -106,17 +106,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'hcaretracter.urls'
 
-DATABASES={
-        'default':{
-           'ENGINE': 'django.contrib.gis.db.backends.postgis',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
-           'HOST': config('DB_HOST'),
-           'PORT': '5432',
-        }
-        
-    }
 
 TEMPLATES = [
     {
@@ -185,8 +174,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'),]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# django_heroku.settings(locals())
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
@@ -213,8 +202,8 @@ cloudinary.config(
 )
 
 LEAFLET_CONFIG={
-    'DEFAULT_CENTER': (-0.314986, 36.822510),
-    'DEFAULT_ZOOM': 8,
+    'DEFAULT_CENTER': (-1.284468, 36.884371),#36.884371 -1.284468
+    'DEFAULT_ZOOM': 13,
     'MAX_ZOOM': 20,
     'MIN_ZOOM':3,
     'SCALE': 'both',

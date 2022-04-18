@@ -2,9 +2,71 @@
   background-color: rgba(1, 1, 1, .5)
 }
 
-#about {
-  background-image: linear-gradient(to right, #007ef3, #e8ecf0,#e4e9ec,#d8dad9, #d3d3d4, #d9dbdd, #e8ecf0,#e4e9ec,#d5dbe1, #AEBCC9 );
+#about, .my_bg {
+  background-image: linear-gradient(to right, #AEBCC9, #e8ecf0,#e4e9ec,#d8dad9, #d3d3d4, #d9dbdd, #e8ecf0,#e4e9ec,#d5dbe1, #AEBCC9 );
 
+}
+
+.tops{
+ height: 50%;
+ background-color: #0CCAF0;
+ width: 40%;
+ border-bottom-left-radius: 100% 100%;
+ position: absolute;
+ right:0%;
+ z-index: -1;
+}
+.bottoms{
+  height: 40%;
+  width: 30%;
+  background-color: #0CCAF0;
+  position: absolute;
+  bottom: -30%;
+  left: 0%;
+  border-top-right-radius: 100% 100%;
+  /* border-bottom-right-radius: 100% 100%; */
+  z-index: -1;
+}
+
+.bottomlogin{
+  height: 40%;
+  width: 30%;
+  background-color: #0CCAF0;
+  position: absolute;
+  bottom: 0%;
+  border-top-right-radius: 100% 100%;
+  z-index: -1;
+}
+.bottomloginright{
+  height: 40%;
+  width: 30%;
+  background-color: #0CCAF0;
+  position: absolute;
+  bottom: 0%;
+  right:0%;
+  border-top-left-radius: 100% 100%;
+  z-index: -1;
+}
+
+.toplogin{
+  height: 30%;
+  background-color: #c9d0dd;
+  width: 20%;
+  border-bottom-left-radius: 100% 100%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  z-index: -1;
+}
+.toploginleft{
+  height: 30%;
+  background-color: #c9d0dd;
+  width: 20%;
+  border-bottom-right-radius: 100% 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: -1;
 }
 
 .pro{  
@@ -125,8 +187,11 @@
   padding-bottom: 20px;
 }
 
+
 @media screen and (max-width: 992px) {
   .icon-content {
       width: 50%;
   }
 }
+
+
