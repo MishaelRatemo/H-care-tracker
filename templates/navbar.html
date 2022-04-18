@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-info p-3">
+<nav class="navbar navbar-expand-lg shadow navbar-light bg-info p-3">
   <div class="container-fluid">    
     <img src={% static 'logo.png' %} alt="logo">
    
@@ -33,9 +33,9 @@
               {{user}}
             </a>
             <ul class="dropdown-menu " aria-labelledby="account">
-              <li><a class="dropdown-item" href="{%url 'index'%}">Home</a></li>
-              <li><a class="dropdown-item" href="/hospital/">Hospital</a></li>
-              <li><a class="dropdown-item" href="/donor/">Donor</a></li>
+              <li><a class="dropdown-item" href="{% url 'index'%}">Home</a></li>
+              <!-- <li><a class="dropdown-item" href="/hospital/">Hospital</a></li>
+              <li><a class="dropdown-item" href="/donor/">Donor</a></li> -->
               <!-- <li><a class="dropdown-item" href="">Profile</a></li> -->
               <li><a class="dropdown-item" href="/accounts/password_change/">Change Password</a></li>
               <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>

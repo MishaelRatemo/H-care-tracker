@@ -21,7 +21,7 @@ $(function() {
             margin: 0,
             autoplay: true,
             animateOut: 'slideOutDown',
-            animateIn: 'slideInUp',
+            animateIn: 'fadeIn',
             pauseOnHover: false,
             nav: true,
             navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">']
