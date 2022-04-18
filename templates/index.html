@@ -3,6 +3,7 @@
 {% load static %}
 
 
+
 {% block title %}
 {{title}}
     
@@ -13,14 +14,16 @@
 {% block content %}
 
 <main class="bdy">
-  <div class="">
-    <!-- <form action="{% url 'newsletter' %}" method="post">
+  <!--<div class="">
+    <form action="{% url 'newsletter' %}" method="post">
         {% csrf_token %}
         
         {{newsletter}}
         <input type="submit" class="btn btn-primary" value="Subscribe">
     </form>
 </div> -->
+
+<!-- 
     <div class="container">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -75,7 +78,6 @@
                   <p class="card-text">We tracker out dispatched prodeucts savely and see to it that the items have been delivered in their destination.</p>
                 </div>
                 <div class="card-footer">
-                  <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
                 </div>
               </div>
             </div>
@@ -87,7 +89,6 @@
                   <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                 </div>
                 <div class="card-footer">
-                  <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
                 </div>
               </div>
             </div>
@@ -101,7 +102,6 @@
 
                 </div>
                 <div class="card-footer">
-                  <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@
                     </p>
                     </div>
                     <div class="col-md-5 col-12">
-                      <!-- <div class="shadow  p-5 m-auto w-50 rtounded" style="background-color:rgb(255, 255, 255)">
+                       <div class="shadow  p-5 m-auto w-50 rtounded" style="background-color:rgb(255, 255, 255)">
                         <form action="{% url 'newsletter' %}" method="post">
                             {% csrf_token %}
                             
@@ -129,7 +129,7 @@
                             <input type="submit" class="btn btn-primary" value="Subscribe">
                         </form>
                     </div> -->
-                    </div>
+                    <!-- </div>
         
                     <div class="col-auto">
                     
@@ -149,14 +149,56 @@
           <a class="text-white" href="hcaretracker.herokuapp.com">h-care-tracker.com</a>
         </div>
        
-        </footer>
+        </footer> --> 
+
+        <!-- <img src="static/images/package.jpg" alt="Free Website Template by Free-Template.co">   -->
+
+        <div class="content">
+      
+          <div class="site-blocks-cover">
+            <div class="img-wrap">
+              <div class="owl-carousel slide-one-item hero-slider">
+                <div class="slide">
+                  <img src="{%static 'images/Rectangle.jpg'%}"  class="card-img-top" alt="...">
+                </div>
+                <div class="slide">
+                  <img src="{%static 'images/package.jpg'%}" class="card-img-top" alt="...">
+                </div>
+                <div class="slide">
+                  <img src="{%static 'images/Rectangle.jpg'%}" class="card-img-top" alt="...">
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 ml-auto align-self-center">
+                  <div class="intro">
+                    <div class="heading">
+                      <h1 class="text-white font-weight-bold">Trust, but verify.</h1>
+                    </div>
+                    <div class="text sub-text">
+                      <p class="text-light fs-4">
+                        Consistency is the true foundation of trust. Either keep your promises or do not make them.
+                        </p>
+                      <p><a href="{% url 'signup' %}" target="_self" class="btn btn-outline-primary btn-md fw-bold btn-pill">Start here</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- END .site-blocks-cover -->
+        </div>
+
+
+
+
 </main>
  
   
-  
-    
-    
+
 {% endblock  %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" ></script>
+
 
 <!-- {% block scripts %}
  {{block.super}}
