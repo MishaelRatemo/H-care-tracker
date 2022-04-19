@@ -67,7 +67,7 @@
               </tr>
             </thead>
             <tbody>
-                  {% for hosi in hospitals %}
+                  {% for hosi in page.object_list %}
                   <tr class="hosi" id="hosi"  >
                     <th scope="row">{{hosi.pk}}</th>
                     <td>{{hosi.donor_name}}</td>
@@ -78,8 +78,26 @@
                   {%empty%}
                     <tr>No orders have been made  </tr>
                   {% endfor %}
+                  <div class="pagination" >
+                    <td colspan="3" class="">
+                      <!-- Page {{page.number}} &nbsp; -->
+                      <span class="step-links">
+                        {% if page.has_previous %}
+                          <button type="button" class="btn btn-outline-info"><a href="?page={{ page.previous_page_number}}">&laquo;Prev page</a>  </button>                      
+                        {% endif %}
+                        <span class="current">
+                          Page {{ page.number }} of {{ page.paginator.num_pages }}.
+                        </span>
+                        
+                        {% if page.has_next %}
+                          <button type="button" class="btn btn-outline-info"><a href="?page={{ page.next_page_number}}">Next page &raquo;</a> </button>                       
+                        {% endif %}
+                      </span>
+                    </td>                    
+                  </div>
             </tbody>
           </table>
+          
           {% include 'progress.html' %}
       </div>
       {% include 'footer.html' %}
