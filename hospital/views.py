@@ -6,6 +6,7 @@ from tracker.models import Item, Order, Registrations
 from .forms import RequestForm
 from django.contrib.auth.decorators import login_required
 from django.core.serializers import  serialize
+from django.core.paginator import Paginator
 
 # Create your views here.
 # @login_required(login_url='/login/')
@@ -30,7 +31,13 @@ def hshome(request):
         current_user = Registrations.objects.get(email=get_user)
     except:
         get_user= 'No User'
+        
     hospital = Order.objects.all().order_by('-order_date')
+    
+    paginator = Paginator(hospital, 8)
+    page_number = request.GET.get('page')
+    page =paginator.get_page(page_number)
+    
     form = RequestForm()
     if request.method == 'POST':
         quantity = request.POST.get('quantity')
@@ -55,7 +62,8 @@ def hshome(request):
     else:
         pass
     args = {
-        'hospitals': hospital,
+        'count':paginator.count,
+        'page': page,
         'form':form,
         'user': loggedin_user,
         'error': error,
